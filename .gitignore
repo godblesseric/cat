@@ -4,12 +4,13 @@
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
-/.idea
+/.idea/**/
 
 # Package Files #
 *.jar
 *.war
 *.ear
+/.idea/artifacts
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
@@ -101,3 +102,6 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 
+.idea/artifacts/cat_web_war_exploded.xml
+cat-blog/cat-blog.iml
+cat-web/cat-web.iml
