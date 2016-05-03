@@ -9,8 +9,8 @@
  * default, but you can specify <tt>autoHeight:true</tt> to allow it to autosize based on its content height.
  * Example usage:</p>
  * <pre><code>
-// The content panel is centered in the container
-var p = Ext.create('Ext.Panel', {
+ // The content panel is centered in the container
+ var p = Ext.create('Ext.Panel', {
     title: 'Center Layout',
     layout: 'ux.center',
     items: [{
@@ -20,10 +20,10 @@ var p = Ext.create('Ext.Panel', {
     }]
 });
 
-// If you leave the title blank and specify no border
-// you'll create a non-visual, structural panel just
-// for centering the contents in the main container.
-var p = Ext.create('Ext.Panel', {
+ // If you leave the title blank and specify no border
+ // you'll create a non-visual, structural panel just
+ // for centering the contents in the main container.
+ var p = Ext.create('Ext.Panel', {
     layout: 'ux.center',
     border: false,
     items: [{
@@ -33,16 +33,16 @@ var p = Ext.create('Ext.Panel', {
         html: 'Some content'
     }]
 });
-</code></pre>
+ </code></pre>
  */
 Ext.define('Ext.ux.layout.Center', {
     extend: 'Ext.layout.container.Fit',
     alias: 'layout.ux.center',
-	// private
-    setItemSize : function(item, width, height){
+    // private
+    setItemSize: function (item, width, height) {
         this.owner.addCls('ux-layout-center');
         item.addCls('ux-layout-center-item');
-        if(item && height > 0) {
+        if (item && height > 0) {
             if (width) {
                 width = item.width;
                 if (Ext.isNumber(item.widthRatio)) {

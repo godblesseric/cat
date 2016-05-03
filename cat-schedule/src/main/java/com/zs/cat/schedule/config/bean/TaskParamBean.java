@@ -1,11 +1,10 @@
 package com.zs.cat.schedule.config.bean;
 
 
-public class TaskParamBean  {
-	
-	
+public class TaskParamBean {
 
-	private int paramId;
+
+    private int paramId;
 
     private int configId;
 

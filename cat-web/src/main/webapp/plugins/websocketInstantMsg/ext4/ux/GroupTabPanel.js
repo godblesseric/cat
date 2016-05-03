@@ -9,15 +9,15 @@ Ext.define('Ext.ux.GroupTabPanel', {
 
     alias: 'widget.grouptabpanel',
 
-    requires:[
+    requires: [
         'Ext.data.*',
         'Ext.tree.*',
         'Ext.layout.*'
     ],
 
-    baseCls : Ext.baseCSSPrefix + 'grouptabpanel',
+    baseCls: Ext.baseCSSPrefix + 'grouptabpanel',
 
-    initComponent: function(config) {
+    initComponent: function (config) {
         var me = this,
             items = [];
 
@@ -33,59 +33,64 @@ Ext.define('Ext.ux.GroupTabPanel', {
             border: false
         };
 
-        me.items = Ext.each(me.items, function(item) {
+        me.items = Ext.each(me.items, function (item) {
             items.push(item.items);
         });
 
-        me.items = [{
-            xtype: 'treepanel',
-            cls: 'x-tree-panel x-grouptabbar',
-            width: 150,
-            rootVisible: false,
-            height: 400,
-            store: me.store,
-            hideHeaders: true,
-            useArrows: true,
-            animate: false,
-            viewConfig: {
-                overItemCls: ''
-            },
-            columns: [{
-                xtype: 'treecolumn',
-                sortable: false,
-                dataIndex: 'text',
-                flex: 1,
-                renderer: function (value, cell, node, idx1, idx2, store, tree) {
-                    var cls = '';
+        me.items = [
+            {
+                xtype: 'treepanel',
+                cls: 'x-tree-panel x-grouptabbar',
+                width: 150,
+                rootVisible: false,
+                height: 400,
+                store: me.store,
+                hideHeaders: true,
+                useArrows: true,
+                animate: false,
+                viewConfig: {
+                    overItemCls: ''
+                },
+                columns: [
+                    {
+                        xtype: 'treecolumn',
+                        sortable: false,
+                        dataIndex: 'text',
+                        flex: 1,
+                        renderer: function (value, cell, node, idx1, idx2, store, tree) {
+                            var cls = '';
 
-                    if (!node.data.activeGroup) {
-                        cls += ' x-inactive-group';
-                    } else if (node.parentNode && node.parentNode.parentNode === null) {
-                        cls += ' x-grouptab-first';
-                        if (node.previousSibling) {
-                            cls += ' x-grouptab-prev';
+                            if (!node.data.activeGroup) {
+                                cls += ' x-inactive-group';
+                            } else if (node.parentNode && node.parentNode.parentNode === null) {
+                                cls += ' x-grouptab-first';
+                                if (node.previousSibling) {
+                                    cls += ' x-grouptab-prev';
+                                }
+                            } else if (node.nextSibling === null) {
+                                cls += ' x-grouptab-last';
+                            } else {
+                                cls += ' x-grouptab-center';
+                            }
+                            if (node.data.activeTab) {
+                                cls += ' x-active-tab';
+                            }
+                            cell.tdCls = 'x-grouptab' + cls;
+
+                            return value;
                         }
-                    } else if (node.nextSibling === null) {
-                        cls += ' x-grouptab-last';
-                    } else {
-                        cls += ' x-grouptab-center';
                     }
-                    if (node.data.activeTab) {
-                            cls += ' x-active-tab';
-                    }
-                    cell.tdCls= 'x-grouptab'+ cls;
-
-                    return value;
-                }
-             }]
-        },{
-            xtype: 'container',
-            flex: 1,
-            layout: 'card',
-            activeItem: me.mainItem,
-            baseCls: Ext.baseCSSPrefix + 'grouptabcontainer',
-            items: items
-        }];
+                ]
+            },
+            {
+                xtype: 'container',
+                flex: 1,
+                layout: 'card',
+                activeItem: me.mainItem,
+                baseCls: Ext.baseCSSPrefix + 'grouptabcontainer',
+                items: items
+            }
+        ];
 
         me.addEvents(
             /**
@@ -152,7 +157,7 @@ Ext.define('Ext.ux.GroupTabPanel', {
             return false;
         }
 
-        while(currentNode) {
+        while (currentNode) {
             currentNode.set('activeTab', false);
             currentNode.set('activeGroup', false);
             currentNode = currentNode.firstChild || currentNode.nextSibling || currentNode.parentNode.nextSibling;
@@ -160,7 +165,7 @@ Ext.define('Ext.ux.GroupTabPanel', {
 
         parent.set('activeGroup', true);
 
-        parent.eachChild(function(child) {
+        parent.eachChild(function (child) {
 
             child.set('activeGroup', true);
         });
@@ -172,12 +177,12 @@ Ext.define('Ext.ux.GroupTabPanel', {
      * Makes the given component active (makes it the visible card in the GroupTabPanel's CardLayout)
      * @param {Ext.Component} cmp The component to make active
      */
-    setActiveTab: function(cmp) {
+    setActiveTab: function (cmp) {
         var me = this,
             newTab = cmp,
             oldTab;
 
-        if(Ext.isString(cmp)) {
+        if (Ext.isString(cmp)) {
             newTab = Ext.getCmp(newTab);
         }
 
@@ -187,25 +192,25 @@ Ext.define('Ext.ux.GroupTabPanel', {
 
         oldTab = me.activeTab;
         if (me.fireEvent('beforetabchange', me, newTab, oldTab) !== false) {
-             me.activeTab = newTab;
-             if (me.rendered) {
-                 me.down('container[baseCls=' + Ext.baseCSSPrefix + 'grouptabcontainer' + ']').getLayout().setActiveItem(newTab);
-             }
-             me.fireEvent('tabchange', me, newTab, oldTab);
-         }
-         return true;
+            me.activeTab = newTab;
+            if (me.rendered) {
+                me.down('container[baseCls=' + Ext.baseCSSPrefix + 'grouptabcontainer' + ']').getLayout().setActiveItem(newTab);
+            }
+            me.fireEvent('tabchange', me, newTab, oldTab);
+        }
+        return true;
     },
 
     /**
      * Makes the given group active
      * @param {Ext.Component} cmp The root component to make active.
      */
-    setActiveGroup: function(cmp) {
+    setActiveGroup: function (cmp) {
         var me = this,
             newGroup = cmp,
             oldGroup;
 
-        if(Ext.isString(cmp)) {
+        if (Ext.isString(cmp)) {
             newGroup = Ext.getCmp(newGroup);
         }
 
@@ -215,27 +220,27 @@ Ext.define('Ext.ux.GroupTabPanel', {
 
         oldGroup = me.activeGroup;
         if (me.fireEvent('beforegroupchange', me, newGroup, oldGroup) !== false) {
-             me.activeGroup = newGroup;
-             me.fireEvent('groupchange', me, newGroup, oldGroup);
-         } else {
-             return false;
-         }
-         return true;
+            me.activeGroup = newGroup;
+            me.fireEvent('groupchange', me, newGroup, oldGroup);
+        } else {
+            return false;
+        }
+        return true;
     },
 
     /**
      * @private
      * Creates the TreeStore used by the GroupTabBar.
      */
-    createItemsStore: function() {
+    createItemsStore: function () {
         var me = this,
             data = {
-            text:'.',
-            children: []
-        };
+                text: '.',
+                children: []
+            };
         me.activeGroup = me.activeGroup || 0;
 
-        Ext.each(me.items, function(item, idx){
+        Ext.each(me.items, function (item, idx) {
             var items = item.items,
                 rootItem = (items[item.mainItem] || items[0]),
                 root = {
@@ -263,11 +268,11 @@ Ext.define('Ext.ux.GroupTabPanel', {
                 me.activeGroup = root.id;
             }
 
-            Ext.each(item.items, function(childItem) {
+            Ext.each(item.items, function (childItem) {
                 if (!childItem.id) {
                     childItem.id = Ext.id();
                 }
-                if(childItem.id !== root.id) {
+                if (childItem.id !== root.id) {
                     var child = {
                         id: childItem.id,
                         leaf: true,
@@ -285,9 +290,9 @@ Ext.define('Ext.ux.GroupTabPanel', {
 
             data.children.push(root);
 
-      }, me);
+        }, me);
 
-       return Ext.create('Ext.data.TreeStore', {
+        return Ext.create('Ext.data.TreeStore', {
             fields: ['id', 'text', 'activeGroup', 'activeTab'],
             root: {expanded: true},
             proxy: {
@@ -301,7 +306,7 @@ Ext.define('Ext.ux.GroupTabPanel', {
      * Returns the item that is currently active inside this GroupTabPanel.
      * @return {Ext.Component/Integer} The currently active item
      */
-    getActiveTab: function() {
+    getActiveTab: function () {
         return this.activeTab;
     },
 
@@ -309,7 +314,7 @@ Ext.define('Ext.ux.GroupTabPanel', {
      * Returns the root group item that is currently active inside this GroupTabPanel.
      * @return {Ext.Component/Integer} The currently active root group item
      */
-    getActiveGroup: function() {
+    getActiveGroup: function () {
         return this.activeGroup;
     }
 });

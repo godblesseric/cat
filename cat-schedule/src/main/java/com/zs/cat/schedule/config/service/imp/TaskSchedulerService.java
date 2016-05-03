@@ -16,37 +16,37 @@ import com.zs.cat.schedule.config.service.ITaskSchedulerService;
 @Component("taskSchedulerService")
 public class TaskSchedulerService implements ITaskSchedulerService {
 
-	private static final Logger logger = LoggerFactory.getLogger(TaskSchedulerService.class);
+    private static final Logger logger = LoggerFactory.getLogger(TaskSchedulerService.class);
 
-	@Resource
-	TaskSchedulerMapper taskSchedulerDAO;
+    @Resource
+    TaskSchedulerMapper taskSchedulerDAO;
 
-	public int deleteByPrimaryKey(int schedulerId) {
-		return taskSchedulerDAO.deleteByPrimaryKey(schedulerId);
-	}
+    public int deleteByPrimaryKey(int schedulerId) {
+        return taskSchedulerDAO.deleteByPrimaryKey(schedulerId);
+    }
 
-	public int insert(TaskScheduler record) {
-		return taskSchedulerDAO.insert(record);
-	}
+    public int insert(TaskScheduler record) {
+        return taskSchedulerDAO.insert(record);
+    }
 
-	public int insertSelective(TaskScheduler record) {
-		return taskSchedulerDAO.insertSelective(record);
-	}
+    public int insertSelective(TaskScheduler record) {
+        return taskSchedulerDAO.insertSelective(record);
+    }
 
-	public TaskScheduler selectByPrimaryKey(int schedulerId) {
-		return taskSchedulerDAO.selectByPrimaryKey(schedulerId);
-	}
+    public TaskScheduler selectByPrimaryKey(int schedulerId) {
+        return taskSchedulerDAO.selectByPrimaryKey(schedulerId);
+    }
 
-	public int updateByPrimaryKeySelective(TaskScheduler record) {
-		return taskSchedulerDAO.updateByPrimaryKeySelective(record);
-	}
+    public int updateByPrimaryKeySelective(TaskScheduler record) {
+        return taskSchedulerDAO.updateByPrimaryKeySelective(record);
+    }
 
-	public int updateByPrimaryKey(TaskScheduler record) {
-		return taskSchedulerDAO.updateByPrimaryKey(record);
-	}
+    public int updateByPrimaryKey(TaskScheduler record) {
+        return taskSchedulerDAO.updateByPrimaryKey(record);
+    }
 
-	public List<TaskScheduler> getTaskGroupFlag(Map<String, Object> paramsMap) {
-		return taskSchedulerDAO.getTaskGroupFlag(paramsMap);
-	}
+    public List<TaskScheduler> getTaskGroupFlag(Map<String, Object> paramsMap) {
+        return taskSchedulerDAO.getTaskGroupFlag(paramsMap);
+    }
 
 }

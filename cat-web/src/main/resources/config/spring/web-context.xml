@@ -9,38 +9,38 @@
        	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
        	">
 
-		<!-- 注解扫描 -->
-		<context:component-scan base-package="com.zs.cat.web;com.zs.cat.schedule;com.zs.cat.commons.dao" />
-		
-		<!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->       
-      	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" /> 
-		<!-- 文件上传 -->
-    	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
-		
-		<!-- 属性文件加载
-		<context:property-placeholder location="classpath:/config/properties/app.properties" /> -->
-		
-		 <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-	        <property name="locations">
-	            <list>
-	                <value>classpath:/config/properties/app.properties</value>
-	            </list>
-	        </property>
-	    </bean>
-	
-	    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
-	        <property name="properties" ref="configProperties" />
-	    </bean>
-    
-		<!-- 数据库配置 -->
-		<import resource="classpath:/config/spring/web-mybatis.xml" />
-		<!--dubbo配置 -->
-		<import resource="classpath:/config/dubbo/webDubbo.xml" />
+    <!-- 注解扫描 -->
+    <context:component-scan base-package="com.zs.cat.web;com.zs.cat.schedule;com.zs.cat.commons.dao"/>
 
-		<!--redis配置 
-		<import resource="classpath:/config/spring/web-redis.xml" />-->
+    <!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
+    <!-- 文件上传 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 
-		 <!--Apache Shiro 配置-->
-		<import resource="classpath:/config/spring/web-shiro.xml" />
-		
+    <!-- 属性文件加载
+    <context:property-placeholder location="classpath:/config/properties/app.properties" /> -->
+
+    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:/config/properties/app.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name="properties" ref="configProperties"/>
+    </bean>
+
+    <!-- 数据库配置 -->
+    <import resource="classpath:/config/spring/web-mybatis.xml"/>
+    <!--dubbo配置 -->
+    <import resource="classpath:/config/dubbo/webDubbo.xml"/>
+
+    <!--redis配置
+    <import resource="classpath:/config/spring/web-redis.xml" />-->
+
+    <!--Apache Shiro 配置-->
+    <import resource="classpath:/config/spring/web-shiro.xml"/>
+
 </beans>

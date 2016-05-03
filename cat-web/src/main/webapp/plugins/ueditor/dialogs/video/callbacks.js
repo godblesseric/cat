@@ -26,7 +26,7 @@ function fileQueued(file) {
     try {
         var progress = new FileProgress(file, this.customSettings.progressTarget);
         progress.setStatus(lang.fileUploadReady);
-        progress.toggleCancel(true, this,lang.delUploadQueue);
+        progress.toggleCancel(true, this, lang.delUploadQueue);
     } catch (ex) {
         this.debug(ex);
     }
@@ -36,13 +36,13 @@ function fileQueued(file) {
 function fileQueueError(file, errorCode, message) {
     try {
         if (errorCode === SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED) {
-            alert(lang.limitPrompt1+ message +  lang.limitPrompt2);
+            alert(lang.limitPrompt1 + message + lang.limitPrompt2);
             return;
         }
 
         var progress = new FileProgress(file, this.customSettings.progressTarget);
         progress.setError();
-        progress.toggleCancel(true, this,lang.delFailFile);
+        progress.toggleCancel(true, this, lang.delFailFile);
 
         switch (errorCode) {
             case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
@@ -70,7 +70,6 @@ function fileQueueError(file, errorCode, message) {
 }
 
 
-
 function uploadStart(file) {
     try {
         /* I don't want to do any file validation or anything,  I'll just update the UI and
@@ -80,8 +79,9 @@ function uploadStart(file) {
          */
         var progress = new FileProgress(file, this.customSettings.progressTarget);
         progress.setStatus(lang.fileUploading);
-        progress.toggleCancel(true, this,lang.cancelUpload);
-    }catch (ex) {}
+        progress.toggleCancel(true, this, lang.cancelUpload);
+    } catch (ex) {
+    }
 
     return true;
 }
@@ -162,5 +162,5 @@ function uploadComplete(file) {
 function queueComplete(numFilesUploaded) {
     var status = document.getElementById("divStatus");
     var num = status.innerHTML.match(/\d+/g);
-    status.innerHTML = ((num && num[0] ?parseInt(num[0]):0) + numFilesUploaded) +lang.statusPrompt;
+    status.innerHTML = ((num && num[0] ? parseInt(num[0]) : 0) + numFilesUploaded) + lang.statusPrompt;
 }

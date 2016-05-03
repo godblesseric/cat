@@ -43,8 +43,7 @@ Ext.define('Ext.ux.RowExpander', {
     rowCollapsedCls: 'x-grid-row-collapsed',
 
 
-
-    renderer: function(value, metadata, record, rowIdx, colIdx) {
+    renderer: function (value, metadata, record, rowIdx, colIdx) {
         if (colIdx === 0) {
             metadata.tdCls = 'x-grid-td-expander';
         }
@@ -66,7 +65,7 @@ Ext.define('Ext.ux.RowExpander', {
      * @param {HtmlElement} expandRow The &lt;tr> element containing the expanded data.
      */
 
-    constructor: function() {
+    constructor: function () {
         this.callParent(arguments);
         var grid = this.getCmp();
         this.recordsExpanded = {};
@@ -78,19 +77,22 @@ Ext.define('Ext.ux.RowExpander', {
         // TODO: if XTemplate/Template receives a template as an arg, should
         // just return it back!
         var rowBodyTpl = Ext.create('Ext.XTemplate', this.rowBodyTpl),
-            features = [{
-                ftype: 'rowbody',
-                columnId: this.getHeaderId(),
-                recordsExpanded: this.recordsExpanded,
-                rowBodyHiddenCls: this.rowBodyHiddenCls,
-                rowCollapsedCls: this.rowCollapsedCls,
-                getAdditionalData: this.getRowBodyFeatureData,
-                getRowBodyContents: function(data) {
-                    return rowBodyTpl.applyTemplate(data);
+            features = [
+                {
+                    ftype: 'rowbody',
+                    columnId: this.getHeaderId(),
+                    recordsExpanded: this.recordsExpanded,
+                    rowBodyHiddenCls: this.rowBodyHiddenCls,
+                    rowCollapsedCls: this.rowCollapsedCls,
+                    getAdditionalData: this.getRowBodyFeatureData,
+                    getRowBodyContents: function (data) {
+                        return rowBodyTpl.applyTemplate(data);
+                    }
+                },
+                {
+                    ftype: 'rowwrap'
                 }
-            },{
-                ftype: 'rowwrap'
-            }];
+            ];
 
         if (grid.features) {
             grid.features = features.concat(grid.features);
@@ -102,14 +104,14 @@ Ext.define('Ext.ux.RowExpander', {
         grid.on('afterlayout', this.onGridAfterLayout, this, {single: true});
     },
 
-    getHeaderId: function() {
+    getHeaderId: function () {
         if (!this.headerId) {
             this.headerId = Ext.id();
         }
         return this.headerId;
     },
 
-    getRowBodyFeatureData: function(data, idx, record, orig) {
+    getRowBodyFeatureData: function (data, idx, record, orig) {
         var o = Ext.grid.feature.RowBody.prototype.getAdditionalData.apply(this, arguments),
             id = this.columnId;
         o.rowBodyColspan = o.rowBodyColspan - 1;
@@ -117,13 +119,13 @@ Ext.define('Ext.ux.RowExpander', {
         o.rowCls = this.recordsExpanded[record.internalId] ? '' : this.rowCollapsedCls;
         o.rowBodyCls = this.recordsExpanded[record.internalId] ? '' : this.rowBodyHiddenCls;
         o[id + '-tdAttr'] = ' valign="top" rowspan="2" ';
-        if (orig[id+'-tdAttr']) {
-            o[id+'-tdAttr'] += orig[id+'-tdAttr'];
+        if (orig[id + '-tdAttr']) {
+            o[id + '-tdAttr'] += orig[id + '-tdAttr'];
         }
         return o;
     },
 
-    onGridAfterLayout: function() {
+    onGridAfterLayout: function () {
         var grid = this.getCmp(),
             view, viewEl;
 
@@ -135,7 +137,7 @@ Ext.define('Ext.ux.RowExpander', {
 
             if (this.expandOnEnter) {
                 this.keyNav = Ext.create('Ext.KeyNav', viewEl, {
-                    'enter' : this.onEnter,
+                    'enter': this.onEnter,
                     scope: this
                 });
             }
@@ -146,12 +148,12 @@ Ext.define('Ext.ux.RowExpander', {
         }
     },
 
-    onEnter: function(e) {
+    onEnter: function (e) {
         var view = this.view,
-            ds   = view.store,
-            sm   = view.getSelectionModel(),
+            ds = view.store,
+            sm = view.getSelectionModel(),
             sels = sm.getSelection(),
-            ln   = sels.length,
+            ln = sels.length,
             i = 0,
             rowIdx;
 
@@ -161,7 +163,7 @@ Ext.define('Ext.ux.RowExpander', {
         }
     },
 
-    toggleRow: function(rowIdx) {
+    toggleRow: function (rowIdx) {
         var rowNode = this.view.getNode(rowIdx),
             row = Ext.get(rowNode),
             nextBd = Ext.get(row).down(this.rowBodyTrSelector),
@@ -181,14 +183,14 @@ Ext.define('Ext.ux.RowExpander', {
         this.view.up('gridpanel').invalidateScroller();
     },
 
-    onDblClick: function(view, cell, rowIdx, cellIndex, e) {
+    onDblClick: function (view, cell, rowIdx, cellIndex, e) {
 
         this.toggleRow(rowIdx);
     },
 
-    getHeaderConfig: function() {
-        var me                = this,
-            toggleRow         = Ext.Function.bind(me.toggleRow, me),
+    getHeaderConfig: function () {
+        var me = this,
+            toggleRow = Ext.Function.bind(me.toggleRow, me),
             selectRowOnExpand = me.selectRowOnExpand;
 
         return {
@@ -200,12 +202,12 @@ Ext.define('Ext.ux.RowExpander', {
             hideable: false,
             menuDisabled: true,
             cls: Ext.baseCSSPrefix + 'grid-header-special',
-            renderer: function(value, metadata) {
+            renderer: function (value, metadata) {
                 metadata.tdCls = Ext.baseCSSPrefix + 'grid-cell-special';
 
                 return '<div class="' + Ext.baseCSSPrefix + 'grid-row-expander">&#160;</div>';
             },
-            processEvent: function(type, view, cell, recordIndex, cellIndex, e) {
+            processEvent: function (type, view, cell, recordIndex, cellIndex, e) {
                 if (type == "mousedown" && e.getTarget('.x-grid-row-expander')) {
                     var row = e.getTarget('.x-grid-row');
                     toggleRow(row);

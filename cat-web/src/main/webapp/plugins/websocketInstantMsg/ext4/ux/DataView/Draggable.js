@@ -3,8 +3,8 @@
  * @extends Object
  * @author Ed Spencer
  *
-<pre><code>
-Ext.create('Ext.view.View', {
+ <pre><code>
+ Ext.create('Ext.view.View', {
     mixins: {
         draggable: 'Ext.ux.DataView.Draggable'
     },
@@ -19,7 +19,7 @@ Ext.create('Ext.view.View', {
         this.callParent(arguments);
     }
 });
-</code></pre>
+ </code></pre>
  *
  */
 Ext.define('Ext.ux.DataView.Draggable', {
@@ -36,7 +36,7 @@ Ext.define('Ext.ux.DataView.Draggable', {
      */
     ghostTpl: [
         '<tpl for=".">',
-            '{title}',
+        '{title}',
         '</tpl>'
     ],
 
@@ -48,43 +48,43 @@ Ext.define('Ext.ux.DataView.Draggable', {
      * @cfg {String} ghostConfig Config object that is used to configure the internally created DataView
      */
 
-    init: function(dataview, config) {
+    init: function (dataview, config) {
         /**
          * @property dataview
          * @type Ext.view.View
          * The Ext.view.View instance that this DragZone is attached to
          */
-    	/*if(!config){
-    		config =  {
-                ddConfig: {
-                    ddGroup: 'desktopDD'
-                },
-                ghostTpl: [
-                           '<tpl for=".">',
-                               '<div class="ux-desktop-shortcut" id="{name}-shortcut">',
-                                   '<div class="ux-desktop-shortcut-icon {iconCls}">',
-                                       '<img src="',Ext.BLANK_IMAGE_URL,'" title="{name}">',
-                                   '</div>',
-                                   '<div class="ux-desktop-shortcut-text">',
-                                   	'<div class="ux-desktop-shortcut-text-inner">{name}</div>',
-                                   '</div>',
-                                   //'<span class="ux-desktop-shortcut-text">{name}</span>',
-                               '</div>',
-                           '</tpl>'
-                ]
-            };
-    	}*/
-    	
+        /*if(!config){
+         config =  {
+         ddConfig: {
+         ddGroup: 'desktopDD'
+         },
+         ghostTpl: [
+         '<tpl for=".">',
+         '<div class="ux-desktop-shortcut" id="{name}-shortcut">',
+         '<div class="ux-desktop-shortcut-icon {iconCls}">',
+         '<img src="',Ext.BLANK_IMAGE_URL,'" title="{name}">',
+         '</div>',
+         '<div class="ux-desktop-shortcut-text">',
+         '<div class="ux-desktop-shortcut-text-inner">{name}</div>',
+         '</div>',
+         //'<span class="ux-desktop-shortcut-text">{name}</span>',
+         '</div>',
+         '</tpl>'
+         ]
+         };
+         }*/
+
         this.dataview = dataview;
 
         dataview.on('render', this.onRender, this);
 
         Ext.apply(this, {
             itemSelector: dataview.itemSelector,
-            ghostConfig : {}
+            ghostConfig: {}
         }, config || {});
 
-        
+
         Ext.applyIf(this.ghostConfig, {
             itemSelector: 'div.ux-desktop-shortcut',
             cls: this.ghostCls,
@@ -96,10 +96,10 @@ Ext.define('Ext.ux.DataView.Draggable', {
      * @private
      * Called when the attached DataView is rendered. Sets up the internal DragZone
      */
-    onRender: function() {
+    onRender: function () {
         var config = Ext.apply({}, this.ddConfig || {}, {
             dvDraggable: this,
-            dataview   : this.dataview,
+            dataview: this.dataview,
             getDragData: this.getDragData,
             getTreeNode: this.getTreeNode,
             afterRepair: this.afterRepair,
@@ -114,11 +114,11 @@ Ext.define('Ext.ux.DataView.Draggable', {
         this.dragZone = Ext.create('Ext.dd.DragZone', this.dataview.getEl(), config);
     },
 
-    getDragData: function(e) {
+    getDragData: function (e) {
         var draggable = this.dvDraggable,
-            dataview  = this.dataview,
-            selModel  = dataview.getSelectionModel(),
-            target    = e.getTarget(draggable.itemSelector),
+            dataview = this.dataview,
+            selModel = dataview.getSelectionModel(),
+            target = e.getTarget(draggable.itemSelector),
             selected, dragData;
 
         if (target) {
@@ -148,14 +148,14 @@ Ext.define('Ext.ux.DataView.Draggable', {
         return false;
     },
 
-    getTreeNode: function() {
+    getTreeNode: function () {
         console.log('test');
     },
 
-    afterRepair: function() {
+    afterRepair: function () {
         this.dragging = false;
 
-        var nodes  = this.dragData.nodes,
+        var nodes = this.dragData.nodes,
             length = nodes.length,
             i;
 
@@ -171,7 +171,7 @@ Ext.define('Ext.ux.DataView.Draggable', {
      * invalid drop target. If we're dragging more than one item we don't animate back and just allow afterRepair
      * to frame each dropped item.
      */
-    getRepairXY: function(e) {
+    getRepairXY: function (e) {
         if (this.dragData.multi) {
             return false;
         } else {
@@ -191,7 +191,7 @@ Ext.define('Ext.ux.DataView.Draggable', {
      * @param {Array} records The set of records that is currently selected in the parent DataView
      * @return {Ext.view.View} The Ghost DataView
      */
-    prepareGhost: function(records) {
+    prepareGhost: function (records) {
         var ghost = this.createGhost(records),
             store = ghost.store;
 
@@ -207,7 +207,7 @@ Ext.define('Ext.ux.DataView.Draggable', {
      * lighter-weight representation of just the nodes that are selected in the parent DataView. Delegates the creation
      * of each selected item's element to {@link createGhostElement}
      */
-    createGhost: function(records) {
+    createGhost: function (records) {
         if (!this.ghost) {
             var ghostConfig = Ext.apply({}, this.ghostConfig, {
                 store: Ext.create('Ext.data.Store', {

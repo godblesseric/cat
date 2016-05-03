@@ -1,430 +1,414 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.zs.cat</groupId>
-    <artifactId>cat</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <artifactId>cat-web</artifactId>
-  <packaging>war</packaging>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.zs.cat</groupId>
+        <artifactId>cat</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>cat-web</artifactId>
+    <packaging>war</packaging>
 
-<dependencies>
+    <dependencies>
 
-		<dependency>
-			<groupId>com.zs.cat</groupId>
-			<artifactId>cat-common</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.zs.cat</groupId>
-			<artifactId>cat-cms-api</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.zs.cat</groupId>
-			<artifactId>cat-blog-api</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		 <!--  <dependency>
-			<groupId>com.zs.cat</groupId>
-			<artifactId>cat-cms</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>     -->
-	
-		  <!-- <dependency>
-			<groupId>com.zs.cat</groupId>
-			<artifactId>cat-schedule</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>  -->
-		
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>dubbo</artifactId>
-			<version>2.5.3</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		
-		<!-- axis-ant -->
-		<dependency>
-			<groupId>axis-ant</groupId>
-			<artifactId>axis-ant</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/axis-ant.jar</systemPath>
-		</dependency>
-		<!-- fcexporter -->
-		<dependency>
-			<groupId>fcexporter</groupId>
-			<artifactId>fcexporter</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/fcexporter.jar</systemPath>
-		</dependency>
-		<!-- fcexporthandler -->
-		<dependency>
-			<groupId>fcexporthandler</groupId>
-			<artifactId>fcexporthandler</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/fcexporthandler.jar</systemPath>
-		</dependency>
-		<!-- fchelper -->
-		<dependency>
-			<groupId>fchelper</groupId>
-			<artifactId>fchelper</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/fchelper.jar</systemPath>
-		</dependency>
-		<!-- fcsampleshelper -->
-		<dependency>
-			<groupId>fcsampleshelper</groupId>
-			<artifactId>fcsampleshelper</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/fcsampleshelper.jar</systemPath>
-		</dependency>
-		<!-- fctl -->
-		<dependency>
-			<groupId>fctl</groupId>
-			<artifactId>fctl</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/fctl.jar</systemPath>
-		</dependency>
-		<!-- json-lib-2.4-jdk15.jar -->
-		<dependency>
-			<groupId>jsonlib</groupId>
-			<artifactId>jsonlib</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/json-lib-2.4-jdk15.jar</systemPath>
-		</dependency>
-		<!-- jackjson-all-1.7.6 -->
-		<dependency>
-			<groupId>jackson</groupId>
-			<artifactId>jackson</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/jackson-all-1.7.6.jar</systemPath>
-		</dependency>
-		<!-- jpush-java-libraryV2 -->
-		<dependency>
-			<groupId>jpush</groupId>
-			<artifactId>jpush</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/jpush-java-libraryV2.jar</systemPath>
-		</dependency>
-		<!-- mail -->
-		<dependency>
-			<groupId>mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/mail.jar</systemPath>
-		</dependency>
-		<!--mybatis-ehcache-1.0.3 -->
-		<dependency>
-			<groupId>mybatis-ehcache</groupId>
-			<artifactId>mybatis-ehcache</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/mybatis-ehcache-1.0.3.jar</systemPath>
-		</dependency>
-		<!-- mybatis-oscache-1.0 -->
-		<dependency>
-			<groupId>mybatis-oscache</groupId>
-			<artifactId>mybatis-oscache</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/mybatis-oscache-1.0.1.jar</systemPath>
-		</dependency>
-		<!-- ojdbc6 -->
-		<dependency>
-			<groupId>ojdbc6</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/ojdbc6.jar</systemPath>
-		</dependency>
-		<!-- pinyin4j-2.5.0 -->
-		<dependency>
-			<groupId>pinyin4j</groupId>
-			<artifactId>pinyin4j</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/pinyin4j-2.5.0.jar</systemPath>
-		</dependency>
-		<!-- poi-3.11-20141221 -->
-		<dependency>
-			<groupId>poi</groupId>
-			<artifactId>poi	</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/poi-3.11-20141221.jar</systemPath>
-		</dependency>
-		<!-- poi-examples-3.11-20141221 -->
-		<dependency>
-			<groupId>poi-examples</groupId>
-			<artifactId>poi-examples</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/poi-examples-3.11-20141221.jar</systemPath>
-		</dependency>
-		<!--poi-excelant-3.11-20141221 -->
-		<dependency>
-			<groupId>poi-excelant</groupId>
-			<artifactId>poi-excelant</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/poi-excelant-3.11-20141221.jar</systemPath>
-		</dependency>
-		<!--poi-ooxml-3.11-20141221 -->
-		<dependency>
-			<groupId>poi-ooxml</groupId>
-			<artifactId>poi-ooxml</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/poi-ooxml-3.11-20141221.jar</systemPath>
-		</dependency>
-		<!-- poi-ooxml-schemas-3.11-20141221 -->
-		<dependency>
-			<groupId>poi-ooxml-schemas</groupId>
-			<artifactId>poi-ooxml-schemas</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/poi-ooxml-schemas-3.11-20141221.jar</systemPath>
-		</dependency>
-		<!-- poi-scratchpad-3.11-20141221 -->
-		<dependency>
-			<groupId>poi-scratchpad</groupId>
-			<artifactId>poi-scratchpad</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/poi-scratchpad-3.11-20141221.jar</systemPath>
-		</dependency>
-		<!--QRCode -->
-		<dependency>
-			<groupId>QRCode</groupId>
-			<artifactId>QRCode</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/QRCode.jar</systemPath>
-		</dependency>
-		<!-- saaj -->
-		<dependency>
-			<groupId>saaj</groupId>
-			<artifactId>saaj</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/saaj.jar</systemPath>
-		</dependency>
-		<!-- shiro-all -->
-		<dependency>
-			<groupId>shiro</groupId>
-			<artifactId>shiro</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/shiro-all-1.2.3.jar</systemPath>
-		</dependency>
-		<!-- sun.misc.BASE64Decoder -->
-		<dependency>
-			<groupId>sun-misc</groupId>
-			<artifactId>sun-misc</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/sun.misc.BASE64Decoder.jar</systemPath>
-		</dependency>
-		<!-- ueditor -->
-		<dependency>
-			<groupId>ueditor</groupId>
-			<artifactId>ueditor</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/ueditor.jar</systemPath>
-		</dependency>
-		<!-- java_websocket -->
-		<dependency>
-			<groupId>java_websocket</groupId>
-			<artifactId>java_websocket</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/java_websocket.jar</systemPath>
-		</dependency>
-		<!-- weixinapi -->
-		<dependency>
-			<groupId>weixinapi</groupId>
-			<artifactId>weixinapi</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/weixinapi.jar</systemPath>
-		</dependency>
-		<!-- weaver-1.6.8.RELEASE.jar -->
-		<dependency>
-			<groupId>weaver-1.6.8</groupId>
-			<artifactId>weaver-1.6.8</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar</systemPath>
-		</dependency>
-</dependencies>
-	
-	<profiles>
-		<profile>
-			<id>dev</id>
-			<properties>
-				<mavenDir>dev</mavenDir>
-			</properties>
-		</profile>
-		<profile>
-			<id>test</id>
-			<properties>
-				<mavenDir>test</mavenDir>
-			</properties>
-		</profile>
-		<profile>
-			<id>per</id>
-			<properties>
-				<mavenDir>performance</mavenDir>
-			</properties>
-		</profile>
-		<profile>
-			<id>product</id>
-			<properties>
-				<mavenDir>product</mavenDir>
-			</properties>
-		</profile>
-		<profile>
-			<id>uat</id>
-			<properties>
-				<mavenDir>uat</mavenDir>
-			</properties>
-		</profile>
-		<profile>
-			<id>prod</id>
-			<properties>
-				<mavenDir>prod</mavenDir>
-			</properties>
-		</profile>
-	</profiles>
-	<build>
-		<finalName>cat-web-${mavenDir}</finalName>
-		<resources>
-			<resource>
-				<directory>src/main/java</directory>
-				<excludes>
-					<exclude>**/*.java</exclude>
-					<exclude>**/.svn/*</exclude>
-					<exclude>**/.git/*</exclude>
-				</excludes>
-			</resource>
+        <dependency>
+            <groupId>com.zs.cat</groupId>
+            <artifactId>cat-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
-			<resource>
-				<directory>${basedir}/src/main/resources</directory>
-				<excludes>
-					<exclude>
+        <dependency>
+            <groupId>com.zs.cat</groupId>
+            <artifactId>cat-cms-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zs.cat</groupId>
+            <artifactId>cat-blog-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!--  <dependency>
+           <groupId>com.zs.cat</groupId>
+           <artifactId>cat-cms</artifactId>
+           <version>0.0.1-SNAPSHOT</version>
+       </dependency>     -->
+
+        <!-- <dependency>
+          <groupId>com.zs.cat</groupId>
+          <artifactId>cat-schedule</artifactId>
+          <version>0.0.1-SNAPSHOT</version>
+      </dependency>  -->
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>2.5.3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- axis-ant -->
+        <dependency>
+            <groupId>axis-ant</groupId>
+            <artifactId>axis-ant</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/axis-ant.jar</systemPath>
+        </dependency>
+        <!-- fcexporter -->
+        <dependency>
+            <groupId>fcexporter</groupId>
+            <artifactId>fcexporter</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/fcexporter.jar</systemPath>
+        </dependency>
+        <!-- fcexporthandler -->
+        <dependency>
+            <groupId>fcexporthandler</groupId>
+            <artifactId>fcexporthandler</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/fcexporthandler.jar</systemPath>
+        </dependency>
+        <!-- fchelper -->
+        <dependency>
+            <groupId>fchelper</groupId>
+            <artifactId>fchelper</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/fchelper.jar</systemPath>
+        </dependency>
+        <!-- fcsampleshelper -->
+        <dependency>
+            <groupId>fcsampleshelper</groupId>
+            <artifactId>fcsampleshelper</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/fcsampleshelper.jar</systemPath>
+        </dependency>
+        <!-- fctl -->
+        <dependency>
+            <groupId>fctl</groupId>
+            <artifactId>fctl</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/fctl.jar</systemPath>
+        </dependency>
+        <!-- json-lib-2.4-jdk15.jar -->
+        <dependency>
+            <groupId>jsonlib</groupId>
+            <artifactId>jsonlib</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/json-lib-2.4-jdk15.jar</systemPath>
+        </dependency>
+        <!-- jackjson-all-1.7.6 -->
+        <dependency>
+            <groupId>jackson</groupId>
+            <artifactId>jackson</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/jackson-all-1.7.6.jar</systemPath>
+        </dependency>
+        <!-- jpush-java-libraryV2 -->
+        <dependency>
+            <groupId>jpush</groupId>
+            <artifactId>jpush</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/jpush-java-libraryV2.jar</systemPath>
+        </dependency>
+        <!-- mail -->
+        <dependency>
+            <groupId>mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/mail.jar</systemPath>
+        </dependency>
+        <!--mybatis-ehcache-1.0.3 -->
+        <dependency>
+            <groupId>mybatis-ehcache</groupId>
+            <artifactId>mybatis-ehcache</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/mybatis-ehcache-1.0.3.jar</systemPath>
+        </dependency>
+        <!-- mybatis-oscache-1.0 -->
+        <dependency>
+            <groupId>mybatis-oscache</groupId>
+            <artifactId>mybatis-oscache</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/mybatis-oscache-1.0.1.jar</systemPath>
+        </dependency>
+        <!-- ojdbc6 -->
+        <dependency>
+            <groupId>ojdbc6</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/ojdbc6.jar</systemPath>
+        </dependency>
+        <!-- pinyin4j-2.5.0 -->
+        <dependency>
+            <groupId>pinyin4j</groupId>
+            <artifactId>pinyin4j</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/pinyin4j-2.5.0.jar</systemPath>
+        </dependency>
+        <!-- poi-3.11-20141221 -->
+        <dependency>
+            <groupId>poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/poi-3.11-20141221.jar</systemPath>
+        </dependency>
+        <!-- poi-examples-3.11-20141221 -->
+        <dependency>
+            <groupId>poi-examples</groupId>
+            <artifactId>poi-examples</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/poi-examples-3.11-20141221.jar</systemPath>
+        </dependency>
+        <!--poi-excelant-3.11-20141221 -->
+        <dependency>
+            <groupId>poi-excelant</groupId>
+            <artifactId>poi-excelant</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/poi-excelant-3.11-20141221.jar</systemPath>
+        </dependency>
+        <!--poi-ooxml-3.11-20141221 -->
+        <dependency>
+            <groupId>poi-ooxml</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/poi-ooxml-3.11-20141221.jar</systemPath>
+        </dependency>
+        <!-- poi-ooxml-schemas-3.11-20141221 -->
+        <dependency>
+            <groupId>poi-ooxml-schemas</groupId>
+            <artifactId>poi-ooxml-schemas</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/poi-ooxml-schemas-3.11-20141221.jar</systemPath>
+        </dependency>
+        <!-- poi-scratchpad-3.11-20141221 -->
+        <dependency>
+            <groupId>poi-scratchpad</groupId>
+            <artifactId>poi-scratchpad</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/poi-scratchpad-3.11-20141221.jar</systemPath>
+        </dependency>
+        <!--QRCode -->
+        <dependency>
+            <groupId>QRCode</groupId>
+            <artifactId>QRCode</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/QRCode.jar</systemPath>
+        </dependency>
+        <!-- saaj -->
+        <dependency>
+            <groupId>saaj</groupId>
+            <artifactId>saaj</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/saaj.jar</systemPath>
+        </dependency>
+        <!-- shiro-all -->
+        <dependency>
+            <groupId>shiro</groupId>
+            <artifactId>shiro</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/shiro-all-1.2.3.jar</systemPath>
+        </dependency>
+        <!-- sun.misc.BASE64Decoder -->
+        <dependency>
+            <groupId>sun-misc</groupId>
+            <artifactId>sun-misc</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/sun.misc.BASE64Decoder.jar</systemPath>
+        </dependency>
+        <!-- ueditor -->
+        <dependency>
+            <groupId>ueditor</groupId>
+            <artifactId>ueditor</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/ueditor.jar</systemPath>
+        </dependency>
+        <!-- java_websocket -->
+        <dependency>
+            <groupId>java_websocket</groupId>
+            <artifactId>java_websocket</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/java_websocket.jar</systemPath>
+        </dependency>
+        <!-- weixinapi -->
+        <dependency>
+            <groupId>weixinapi</groupId>
+            <artifactId>weixinapi</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/weixinapi.jar</systemPath>
+        </dependency>
+        <!-- weaver-1.6.8.RELEASE.jar -->
+        <dependency>
+            <groupId>weaver-1.6.8</groupId>
+            <artifactId>weaver-1.6.8</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>
+                ${project.basedir}/src/main/webapp/WEB-INF/lib/com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar
+            </systemPath>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <mavenDir>dev</mavenDir>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <mavenDir>test</mavenDir>
+            </properties>
+        </profile>
+        <profile>
+            <id>per</id>
+            <properties>
+                <mavenDir>performance</mavenDir>
+            </properties>
+        </profile>
+        <profile>
+            <id>product</id>
+            <properties>
+                <mavenDir>product</mavenDir>
+            </properties>
+        </profile>
+        <profile>
+            <id>uat</id>
+            <properties>
+                <mavenDir>uat</mavenDir>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <mavenDir>prod</mavenDir>
+            </properties>
+        </profile>
+    </profiles>
+    <build>
+        <finalName>cat-web-${mavenDir}</finalName>
+
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                    <exclude>**/.svn/*</exclude>
+                    <exclude>**/.git/*</exclude>
+                </excludes>
+            </resource>
+
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <excludes>
+                    <exclude>
                         **/app.properties
                     </exclude>
-				</excludes>
-			</resource>
-			<resource>
-				<directory>${basedir}/src/main/resources</directory>
-				<excludes>
-					<exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <excludes>
+                    <exclude>
                         config/properties/dev/*
                     </exclude>
-					<exclude>
+                    <exclude>
                         config/properties/product/*
                     </exclude>
-					<exclude>
+                    <exclude>
                         config/properties/test/*
                     </exclude>
-					<exclude>
-						config/properties/performance/*
-					</exclude>
-				</excludes>
-			</resource>
-		</resources>
-		<plugins>
-			<!--maven-war-plugin-->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.1-alpha-1</version>
-				<configuration>
-					<webResources>
-						<!-- 对需要修改参数的配置文件进行配置 filtering -->
-						<resource>
-							<directory>src/main/resources/config/properties/${mavenDir}</directory>
-							<targetPath>WEB-INF/classes/config/properties</targetPath>
-							<!--<filtering>true</filtering>-->
-						</resource>
-					</webResources>
-				</configuration>
-			</plugin>
-			<!---->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-					<encoding>${project.build.sourceEncoding}</encoding>
-				</configuration>
-			</plugin>
-			<!--<plugin>-->
-				<!--<artifactId>maven-assembly-plugin</artifactId>-->
-				<!--<executions>  &lt;!&ndash;执行器 mvn assembly:assembly &ndash;&gt;-->
-					<!--<execution>-->
-						<!--<id>make-zip</id>-->
-						<!--&lt;!&ndash;名字任意 &ndash;&gt;-->
-						<!--<phase>package</phase>-->
-						<!--&lt;!&ndash; 绑定到package生命周期阶段上 &ndash;&gt;-->
-						<!--<goals>-->
-							<!--<goal>single</goal>-->
-							<!--&lt;!&ndash; 只运行一次 &ndash;&gt;-->
-						<!--</goals>-->
-						<!--<configuration>-->
-							<!--<descriptors> &lt;!&ndash;描述文件路径 &ndash;&gt;-->
-								<!--<descriptor>src/main/resources/assemble/descriptor.xml</descriptor>-->
-							<!--</descriptors>-->
-						<!--</configuration>-->
-					<!--</execution>-->
-				<!--</executions>-->
-			<!--</plugin>-->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.2</version>
-				<configuration>
-					<excludes>
-						<exclude> **/spring/**</exclude>
-						<exclude> **/assemble/** </exclude>
-						<exclude> **/logback.xml </exclude>
-						<exclude> **/script/**</exclude>
-						<exclude> **/config/**</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<argLine>-XX:-UseSplitVerifier</argLine>
-					<excludes>
-						<exclude>**/Dubbo*Test.java</exclude>
-					</excludes>
-					<skip>false</skip>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+                    <exclude>
+                        config/properties/performance/*
+                    </exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+            <!--maven-war-plugin-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1-alpha-1</version>
+                <configuration>
+                    <webResources>
+                        <!-- 对需要修改参数的配置文件进行配置 filtering -->
+                        <resource>
+                            <directory>src/main/resources/config/properties/${mavenDir}</directory>
+                            <targetPath>WEB-INF/classes/config/properties</targetPath>
+                            <!--<filtering>true</filtering>-->
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+            <!---->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/spring/**</exclude>
+                        <exclude>**/assemble/**</exclude>
+                        <exclude>**/logback.xml</exclude>
+                        <exclude>**/script/**</exclude>
+                        <exclude>**/config/**</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>-XX:-UseSplitVerifier</argLine>
+                    <excludes>
+                        <exclude>**/Dubbo*Test.java</exclude>
+                    </excludes>
+                    <skip>false</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

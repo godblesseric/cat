@@ -38,7 +38,7 @@ Ext.define('Ext.ux.Spotlight', {
     /**
      * Create all the elements for the spotlight
      */
-    createElements: function() {
+    createElements: function () {
         var body = Ext.getBody();
 
         this.right = body.createChild({
@@ -60,7 +60,7 @@ Ext.define('Ext.ux.Spotlight', {
     /**
      * Show the spotlight
      */
-    show: function(el, callback, scope) {
+    show: function (el, callback, scope) {
         //get the target element
         this.el = Ext.get(el);
 
@@ -84,7 +84,7 @@ Ext.define('Ext.ux.Spotlight', {
     /**
      * Hide the spotlight
      */
-    hide: function(callback, scope) {
+    hide: function (callback, scope) {
         Ext.EventManager.removeResizeListener(this.syncSize, this);
 
         this.applyBounds(this.animate, true);
@@ -93,7 +93,7 @@ Ext.define('Ext.ux.Spotlight', {
     /**
      * Resizes the spotlight with the window size.
      */
-    syncSize: function() {
+    syncSize: function () {
         this.applyBounds(false, false);
     },
 
@@ -102,7 +102,7 @@ Ext.define('Ext.ux.Spotlight', {
      * @param {Boolean} animate True to animate the changing of the bounds
      * @param {Boolean} animate True to reverse the animation
      */
-    applyBounds: function(animate, reverse) {
+    applyBounds: function (animate, reverse) {
         var me = this,
             box = me.el.getBox();
 
@@ -180,27 +180,27 @@ Ext.define('Ext.ux.Spotlight', {
         }
 
         if (animate) {
-            Ext.each(['right', 'left', 'top', 'bottom'], function(side) {
-                me[side].setBox(from[side]);
-                me[side].animate({
-                    duration: me.duration,
-                    easing: me.easing,
-                    to: to[side]
-                });
-            },
-            this);
+            Ext.each(['right', 'left', 'top', 'bottom'], function (side) {
+                    me[side].setBox(from[side]);
+                    me[side].animate({
+                        duration: me.duration,
+                        easing: me.easing,
+                        to: to[side]
+                    });
+                },
+                this);
         } else {
-            Ext.each(['right', 'left', 'top', 'bottom'], function(side) {
-                me[side].setBox(Ext.apply(from[side], to[side]));
-            },
-            this);
+            Ext.each(['right', 'left', 'top', 'bottom'], function (side) {
+                    me[side].setBox(Ext.apply(from[side], to[side]));
+                },
+                this);
         }
     },
 
     /**
      * Removes all the elements for the spotlight
      */
-    destroy: function() {
+    destroy: function () {
         Ext.destroy(this.right, this.left, this.top, this.bottom);
         delete this.el;
         delete this.all;

@@ -12,25 +12,25 @@ Ext.define('Ext.ux.grid.menu.ListMenu', {
      * @cfg {String} labelField
      * Defaults to 'text'.
      */
-    labelField :  'text',
+    labelField: 'text',
     /**
      * @cfg {String} paramPrefix
      * Defaults to 'Loading...'.
      */
-    loadingText : 'Loading...',
+    loadingText: 'Loading...',
     /**
      * @cfg {Boolean} loadOnShow
      * Defaults to true.
      */
-    loadOnShow : true,
+    loadOnShow: true,
     /**
      * @cfg {Boolean} single
      * Specify true to group all items in this list into a single-select
      * radio button group. Defaults to false.
      */
-    single : false,
+    single: false,
 
-    constructor : function (cfg) {
+    constructor: function (cfg) {
         this.selected = [];
         this.addEvents(
             /**
@@ -44,23 +44,29 @@ Ext.define('Ext.ux.grid.menu.ListMenu', {
 
         this.callParent([cfg = cfg || {}]);
 
-        if(!cfg.store && cfg.options){
+        if (!cfg.store && cfg.options) {
             var options = [];
-            for(var i=0, len=cfg.options.length; i<len; i++){
+            for (var i = 0, len = cfg.options.length; i < len; i++) {
                 var value = cfg.options[i];
-                switch(Ext.type(value)){
-                    case 'array':  options.push(value); break;
-                    case 'object': options.push([value.id, value[this.labelField]]); break;
-                    case 'string': options.push([value, value]); break;
+                switch (Ext.type(value)) {
+                    case 'array':
+                        options.push(value);
+                        break;
+                    case 'object':
+                        options.push([value.id, value[this.labelField]]);
+                        break;
+                    case 'string':
+                        options.push([value, value]);
+                        break;
                 }
             }
 
             this.store = Ext.create('Ext.data.ArrayStore', {
                 fields: ['id', this.labelField],
-                data:   options,
+                data: options,
                 listeners: {
                     'load': this.onLoad,
-                    scope:  this
+                    scope: this
                 }
             });
             this.loaded = true;
@@ -70,7 +76,7 @@ Ext.define('Ext.ux.grid.menu.ListMenu', {
         }
     },
 
-    destroy : function () {
+    destroy: function () {
         if (this.store) {
             this.store.destroy();
         }
@@ -84,10 +90,10 @@ Ext.define('Ext.ux.grid.menu.ListMenu', {
      * allow show to be called with no arguments to show with the previous arguments and
      * thus recalculate the width and potentially hang the menu from the left.
      */
-    show : function () {
+    show: function () {
         var lastArgs = null;
-        return function(){
-            if(arguments.length === 0){
+        return function () {
+            if (arguments.length === 0) {
                 this.callParent(lastArgs);
             } else {
                 lastArgs = arguments;
@@ -100,7 +106,7 @@ Ext.define('Ext.ux.grid.menu.ListMenu', {
     }(),
 
     /** @private */
-    onLoad : function (store, records) {
+    onLoad: function (store, records) {
         var me = this,
             visible = me.isVisible(),
             gid, item, itemValue, i, len;
@@ -137,16 +143,16 @@ Ext.define('Ext.ux.grid.menu.ListMenu', {
      * Get the selected items.
      * @return {Array} selected
      */
-    getSelected : function () {
+    getSelected: function () {
         return this.selected;
     },
 
     /** @private */
-    setSelected : function (value) {
+    setSelected: function (value) {
         value = this.selected = [].concat(value);
 
         if (this.loaded) {
-            this.items.each(function(item){
+            this.items.each(function (item) {
                 item.setChecked(false, true);
                 for (var i = 0, len = value.length; i < len; i++) {
                     if (item.value == value[i]) {
@@ -162,13 +168,13 @@ Ext.define('Ext.ux.grid.menu.ListMenu', {
      * @param {Object} item Ext.menu.CheckItem
      * @param {Object} checked The checked value that was set
      */
-    checkChange : function (item, checked) {
+    checkChange: function (item, checked) {
         var value = [];
-        this.items.each(function(item){
+        this.items.each(function (item) {
             if (item.checked) {
                 value.push(item.value);
             }
-        },this);
+        }, this);
         this.selected = value;
 
         this.fireEvent('checkchange', item, checked);

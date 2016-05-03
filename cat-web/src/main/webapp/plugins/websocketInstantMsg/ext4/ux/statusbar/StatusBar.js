@@ -5,7 +5,7 @@
  * provides a greedy status element that can be aligned to either side and has convenient methods for setting the
  * status text and icon.  You can also indicate that something is processing using the {@link #showBusy} method.</p>
  * <pre><code>
-Ext.create('Ext.Panel', {
+ Ext.create('Ext.Panel', {
     title: 'StatusBar',
     // etc.
     bbar: Ext.create('Ext.ux.StatusBar', {
@@ -26,21 +26,21 @@ Ext.create('Ext.Panel', {
     })
 });
 
-// Update the status bar later in code:
-var sb = Ext.getCmp('my-status');
-sb.setStatus({
+ // Update the status bar later in code:
+ var sb = Ext.getCmp('my-status');
+ sb.setStatus({
     text: 'OK',
     iconCls: 'ok-icon',
     clear: true // auto-clear after a set interval
 });
 
-// Set the status bar to show that something is processing:
-sb.showBusy();
+ // Set the status bar to show that something is processing:
+ sb.showBusy();
 
-// processing....
+ // processing....
 
-sb.clearStatus(); // once completeed
-</code></pre>
+ sb.clearStatus(); // once completeed
+ </code></pre>
  * @extends Ext.toolbar.Toolbar
  * @constructor
  * Creates a new StatusBar
@@ -59,9 +59,9 @@ Ext.define('Ext.ux.statusbar.StatusBar', {
      * rendered, in added order, to the opposite side.  The status element is greedy, so it will automatically
      * expand to take up all sapce left over by any other items.  Example usage:
      * <pre><code>
-// Create a left-aligned status bar containing a button,
-// separator and text item that will be right-aligned (default):
-Ext.create('Ext.Panel', {
+     // Create a left-aligned status bar containing a button,
+     // separator and text item that will be right-aligned (default):
+     Ext.create('Ext.Panel', {
     title: 'StatusBar',
     // etc.
     bbar: Ext.create('Ext.ux.StatusBar', {
@@ -73,10 +73,10 @@ Ext.create('Ext.Panel', {
     })
 });
 
-// By adding the statusAlign config, this will create the
-// exact same toolbar, except the status and toolbar item
-// layout will be reversed from the previous example:
-Ext.create('Ext.Panel', {
+     // By adding the statusAlign config, this will create the
+     // exact same toolbar, except the status and toolbar item
+     // layout will be reversed from the previous example:
+     Ext.create('Ext.Panel', {
     title: 'StatusBar',
     // etc.
     bbar: Ext.create('Ext.ux.StatusBar', {
@@ -88,7 +88,7 @@ Ext.create('Ext.Panel', {
         }, '-', 'Plain Text']
     })
 });
-</code></pre>
+     </code></pre>
      */
     /**
      * @cfg {String} defaultText
@@ -112,30 +112,30 @@ Ext.create('Ext.Panel', {
      * A CSS class that will be <b>initially</b> set as the status bar icon and is
      * expected to provide a background image (defaults to '').
      * Example usage:<pre><code>
-// Example CSS rule:
-.x-statusbar .x-status-custom {
+     // Example CSS rule:
+     .x-statusbar .x-status-custom {
     padding-left: 25px;
     background: transparent url(images/custom-icon.gif) no-repeat 3px 2px;
 }
 
-// Setting a default icon:
-var sb = Ext.create('Ext.ux.StatusBar', {
+     // Setting a default icon:
+     var sb = Ext.create('Ext.ux.StatusBar', {
     defaultIconCls: 'x-status-custom'
 });
 
-// Changing the icon:
-sb.setStatus({
+     // Changing the icon:
+     sb.setStatus({
     text: 'New status',
     iconCls: 'x-status-custom'
 });
-</code></pre>
+     </code></pre>
      */
 
     /**
      * @cfg {String} cls
      * The base class applied to the containing element for this component on render (defaults to 'x-statusbar')
      */
-    cls : 'x-statusbar',
+    cls: 'x-statusbar',
     /**
      * @cfg {String} busyIconCls
      * The default <code>{@link #iconCls}</code> applied when calling
@@ -143,7 +143,7 @@ sb.setStatus({
      * It can be overridden at any time by passing the <code>iconCls</code>
      * argument into <code>{@link #showBusy}</code>.
      */
-    busyIconCls : 'x-status-busy',
+    busyIconCls: 'x-status-busy',
     /**
      * @cfg {String} busyText
      * The default <code>{@link #text}</code> applied when calling
@@ -151,7 +151,7 @@ sb.setStatus({
      * It can be overridden at any time by passing the <code>text</code>
      * argument into <code>{@link #showBusy}</code>.
      */
-    busyText : 'Loading...',
+    busyText: 'Loading...',
     /**
      * @cfg {Number} autoClear
      * The number of milliseconds to wait after setting the status via
@@ -163,7 +163,7 @@ sb.setStatus({
      * <code>{@link #setStatus}</code>. Calls to <code>{@link #clearStatus}</code>
      * always clear the status bar immediately and ignore this value.
      */
-    autoClear : 5000,
+    autoClear: 5000,
 
     /**
      * @cfg {String} emptyText
@@ -175,13 +175,13 @@ sb.setStatus({
      * vertically when no text is specified and there are no other items in
      * the toolbar.
      */
-    emptyText : '&nbsp;',
+    emptyText: '&nbsp;',
 
     // private
-    activeThreadId : 0,
+    activeThreadId: 0,
 
     // private
-    initComponent : function(){
+    initComponent: function () {
         if (this.statusAlign === 'right') {
             this.cls += ' x-status-right';
         }
@@ -189,7 +189,7 @@ sb.setStatus({
     },
 
     // private
-    afterRender : function(){
+    afterRender: function () {
         this.callParent(arguments);
 
         var right = this.statusAlign === 'right';
@@ -236,18 +236,18 @@ sb.setStatus({
      *    (defaults to true which uses {@link #defaultText} and {@link #defaultIconCls}).</li>
      * </ul></li></ul>
      * Example usage:<pre><code>
-// Simple call to update the text
-statusBar.setStatus('New status');
+     // Simple call to update the text
+     statusBar.setStatus('New status');
 
-// Set the status and icon, auto-clearing with default options:
-statusBar.setStatus({
+     // Set the status and icon, auto-clearing with default options:
+     statusBar.setStatus({
     text: 'New status',
     iconCls: 'x-status-custom',
     clear: true
 });
 
-// Auto-clear with custom options:
-statusBar.setStatus({
+     // Auto-clear with custom options:
+     statusBar.setStatus({
     text: 'New status',
     iconCls: 'x-status-custom',
     clear: {
@@ -256,14 +256,14 @@ statusBar.setStatus({
         useDefaults: false
     }
 });
-</code></pre>
+     </code></pre>
      * @return {Ext.ux.StatusBar} this
      */
-    setStatus : function(o) {
+    setStatus: function (o) {
         o = o || {};
 
         if (Ext.isString(o)) {
-            o = {text:o};
+            o = {text: o};
         }
         if (o.text !== undefined) {
             this.setText(o.text);
@@ -307,7 +307,7 @@ statusBar.setStatus({
      * </ul>
      * @return {Ext.ux.StatusBar} this
      */
-    clearStatus : function(o) {
+    clearStatus: function (o) {
         o = o || {};
 
         if (o.threadId && o.threadId !== this.activeThreadId) {
@@ -326,23 +326,23 @@ statusBar.setStatus({
                 remove: false,
                 useDisplay: true,
                 scope: this,
-                callback: function(){
+                callback: function () {
                     this.setStatus({
-                     text: text,
-                     iconCls: iconCls
-                 });
+                        text: text,
+                        iconCls: iconCls
+                    });
 
                     this.statusEl.el.show();
                 }
             });
         } else {
             // hide/show the el to avoid jumpy text or icon
-             this.statusEl.hide();
-             this.setStatus({
-                 text: text,
-                 iconCls: iconCls
-             });
-             this.statusEl.show();
+            this.statusEl.hide();
+            this.setStatus({
+                text: text,
+                iconCls: iconCls
+            });
+            this.statusEl.show();
         }
         this.doLayout();
         return this;
@@ -353,7 +353,7 @@ statusBar.setStatus({
      * @param {String} text (optional) The text to set (defaults to '')
      * @return {Ext.ux.StatusBar} this
      */
-    setText : function(text){
+    setText: function (text) {
         this.activeThreadId++;
         this.text = text || '';
         if (this.rendered) {
@@ -366,7 +366,7 @@ statusBar.setStatus({
      * Returns the current status text.
      * @return {String} The status text
      */
-    getText : function(){
+    getText: function () {
         return this.text;
     },
 
@@ -376,19 +376,19 @@ statusBar.setStatus({
      * @param {String} iconCls (optional) The icon class to set (defaults to '', and any current icon class is removed)
      * @return {Ext.ux.StatusBar} this
      */
-    setIcon : function(cls){
+    setIcon: function (cls) {
         this.activeThreadId++;
         cls = cls || '';
 
         if (this.rendered) {
-         if (this.currIconCls) {
-             this.statusEl.removeCls(this.currIconCls);
-             this.currIconCls = null;
-         }
-         if (cls.length > 0) {
-             this.statusEl.addCls(cls);
-             this.currIconCls = cls;
-         }
+            if (this.currIconCls) {
+                this.statusEl.removeCls(this.currIconCls);
+                this.currIconCls = null;
+            }
+            if (cls.length > 0) {
+                this.statusEl.addCls(cls);
+                this.currIconCls = cls;
+            }
         } else {
             this.currIconCls = cls;
         }
@@ -405,7 +405,7 @@ statusBar.setStatus({
      * {@link #busyIconCls} will be used in conjunction with all of the default options for {@link #setStatus}.
      * @return {Ext.ux.StatusBar} this
      */
-    showBusy : function(o){
+    showBusy: function (o) {
         if (Ext.isString(o)) {
             o = { text: o };
         }

@@ -125,7 +125,7 @@ Ext.define('Ext.ux.form.MultiSelect', {
 
 
     // private
-    initComponent: function(){
+    initComponent: function () {
         var me = this;
 
         me.bindStore(me.store, true);
@@ -143,7 +143,7 @@ Ext.define('Ext.ux.form.MultiSelect', {
         me.callParent();
     },
 
-    bindStore: function(store, initial) {
+    bindStore: function (store, initial) {
         var me = this,
             oldStore = me.store,
             boundList = me.boundList;
@@ -160,7 +160,7 @@ Ext.define('Ext.ux.form.MultiSelect', {
 
 
     // private
-    onRender: function(ct, position) {
+    onRender: function (ct, position) {
         var me = this,
             panel, boundList, selModel;
 
@@ -195,31 +195,31 @@ Ext.define('Ext.ux.form.MultiSelect', {
     },
 
     // No content generated via template, it's all added components
-    getSubTplMarkup: function() {
+    getSubTplMarkup: function () {
         return '';
     },
 
     // private
-    afterRender: function() {
+    afterRender: function () {
         var me = this;
         me.callParent();
 
-        if (me.ddReorder && !me.dragGroup && !me.dropGroup){
+        if (me.ddReorder && !me.dragGroup && !me.dropGroup) {
             me.dragGroup = me.dropGroup = 'MultiselectDD-' + Ext.id();
         }
 
-        if (me.draggable || me.dragGroup){
+        if (me.draggable || me.dragGroup) {
             me.dragZone = Ext.create('Ext.view.DragZone', {
                 view: me.boundList,
                 ddGroup: me.dragGroup,
                 dragText: '{0} Item{1}'
             });
         }
-        if (me.droppable || me.dropGroup){
+        if (me.droppable || me.dropGroup) {
             me.dropZone = Ext.create('Ext.view.DropZone', {
                 view: me.boundList,
                 ddGroup: me.dropGroup,
-                handleNodeDrop: function(data, dropRecord, position) {
+                handleNodeDrop: function (data, dropRecord, position) {
                     var view = this.view,
                         store = view.getStore(),
                         records = data.records,
@@ -239,14 +239,14 @@ Ext.define('Ext.ux.form.MultiSelect', {
         }
     },
 
-    onSelectionChange: function() {
+    onSelectionChange: function () {
         this.checkChange();
     },
 
     /**
      * Clears any values currently selected.
      */
-    clearValue: function() {
+    clearValue: function () {
         this.setValue([]);
     },
 
@@ -255,7 +255,7 @@ Ext.define('Ext.ux.form.MultiSelect', {
      * config: If it is set to a String value (like the default ',') then this will return the selected values
      * joined by the delimiter. If it is set to <tt>null</tt> then the values will be returned as an Array.
      */
-    getSubmitValue: function() {
+    getSubmitValue: function () {
         var me = this,
             delimiter = me.delimiter,
             val = me.getValue();
@@ -263,11 +263,11 @@ Ext.define('Ext.ux.form.MultiSelect', {
     },
 
     // inherit docs
-    getRawValue: function() {
+    getRawValue: function () {
         var me = this,
             boundList = me.boundList;
         if (boundList) {
-            me.rawValue = Ext.Array.map(boundList.getSelectionModel().getSelection(), function(model) {
+            me.rawValue = Ext.Array.map(boundList.getSelectionModel().getSelection(), function (model) {
                 return model.get(me.valueField);
             });
         }
@@ -275,7 +275,7 @@ Ext.define('Ext.ux.form.MultiSelect', {
     },
 
     // inherit docs
-    setRawValue: function(value) {
+    setRawValue: function (value) {
         var me = this,
             boundList = me.boundList,
             models;
@@ -285,7 +285,7 @@ Ext.define('Ext.ux.form.MultiSelect', {
 
         if (boundList) {
             models = [];
-            Ext.Array.forEach(value, function(val) {
+            Ext.Array.forEach(value, function (val) {
                 var undef,
                     model = me.store.findRecord(me.valueField, val, undef, undef, true, true);
                 if (model) {
@@ -299,12 +299,12 @@ Ext.define('Ext.ux.form.MultiSelect', {
     },
 
     // no conversion
-    valueToRaw: function(value) {
+    valueToRaw: function (value) {
         return value;
     },
 
     // compare array values
-    isEqual: function(v1, v2) {
+    isEqual: function (v1, v2) {
         var fromArray = Ext.Array.from,
             i, len;
 
@@ -316,7 +316,7 @@ Ext.define('Ext.ux.form.MultiSelect', {
             return false;
         }
 
-        for(i = 0; i < len; i++) {
+        for (i = 0; i < len; i++) {
             if (v2[i] !== v1[i]) {
                 return false;
             }
@@ -325,7 +325,7 @@ Ext.define('Ext.ux.form.MultiSelect', {
         return true;
     },
 
-    getErrors : function(value) {
+    getErrors: function (value) {
         var me = this,
             format = Ext.String.format,
             errors = me.callParent(arguments),
@@ -347,19 +347,19 @@ Ext.define('Ext.ux.form.MultiSelect', {
         return errors;
     },
 
-    onDisable: function() {
+    onDisable: function () {
         this.callParent();
         this.disabled = true;
         this.updateReadOnly();
     },
 
-    onEnable: function() {
+    onEnable: function () {
         this.callParent();
         this.disabled = false;
         this.updateReadOnly();
     },
 
-    setReadOnly: function(readOnly) {
+    setReadOnly: function (readOnly) {
         this.readOnly = readOnly;
         this.updateReadOnly();
     },
@@ -367,7 +367,7 @@ Ext.define('Ext.ux.form.MultiSelect', {
     /**
      * @private Lock or unlock the BoundList's selection model to match the current disabled/readonly state
      */
-    updateReadOnly: function() {
+    updateReadOnly: function () {
         var me = this,
             boundList = me.boundList,
             readOnly = me.readOnly || me.disabled;
@@ -376,7 +376,7 @@ Ext.define('Ext.ux.form.MultiSelect', {
         }
     },
 
-    onDestroy: function(){
+    onDestroy: function () {
         Ext.destroyMembers(this, 'panel', 'boundList', 'dragZone', 'dropZone');
         this.callParent();
     }

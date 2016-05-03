@@ -9,7 +9,7 @@
  *
  * <p><b><u>Example Usage:</u></b></p>
  * <pre><code>
-var filters = Ext.create('Ext.ux.grid.GridFilters', {
+ var filters = Ext.create('Ext.ux.grid.GridFilters', {
     ...
     filters: [{
         type: 'list',
@@ -37,25 +37,25 @@ Ext.define('Ext.ux.grid.filter.ListFilter', {
      * <div class="mdetail-params"><ul>
      * <li><b>Array</b> :
      * <pre><code>
-options: [
-    [11, 'extra small'],
-    [18, 'small'],
-    [22, 'medium'],
-    [35, 'large'],
-    [44, 'extra large']
-]
+     options: [
+     [11, 'extra small'],
+     [18, 'small'],
+     [22, 'medium'],
+     [35, 'large'],
+     [44, 'extra large']
+     ]
      * </code></pre>
      * </li>
      * <li><b>Object</b> :
      * <pre><code>
-labelField: 'name', // override default of 'text'
-options: [
-    {id: 11, name:'extra small'},
-    {id: 18, name:'small'},
-    {id: 22, name:'medium'},
-    {id: 35, name:'large'},
-    {id: 44, name:'extra large'}
-]
+     labelField: 'name', // override default of 'text'
+     options: [
+     {id: 11, name:'extra small'},
+     {id: 18, name:'small'},
+     {id: 22, name:'medium'},
+     {id: 35, name:'large'},
+     {id: 44, name:'extra large'}
+     ]
      * </code></pre>
      * </li>
      * <li><b>String</b> :
@@ -69,27 +69,27 @@ options: [
      * <p>Adjust the format of this filter. Defaults to false.</p>
      * <br><p>When GridFilters <code>@cfg encode = false</code> (default):</p>
      * <pre><code>
-// phpMode == false (default):
-filter[0][data][type] list
-filter[0][data][value] value1
-filter[0][data][value] value2
-filter[0][field] prod
+     // phpMode == false (default):
+     filter[0][data][type] list
+     filter[0][data][value] value1
+     filter[0][data][value] value2
+     filter[0][field] prod
 
-// phpMode == true:
-filter[0][data][type] list
-filter[0][data][value] value1, value2
-filter[0][field] prod
+     // phpMode == true:
+     filter[0][data][type] list
+     filter[0][data][value] value1, value2
+     filter[0][field] prod
      * </code></pre>
      * When GridFilters <code>@cfg encode = true</code>:
      * <pre><code>
-// phpMode == false (default):
-filter : [{"type":"list","value":["small","medium"],"field":"size"}]
+     // phpMode == false (default):
+     filter : [{"type":"list","value":["small","medium"],"field":"size"}]
 
-// phpMode == true:
-filter : [{"type":"list","value":"small,medium","field":"size"}]
+     // phpMode == true:
+     filter : [{"type":"list","value":"small,medium","field":"size"}]
      * </code></pre>
      */
-    phpMode : false,
+    phpMode: false,
     /**
      * @cfg {Ext.data.Store} store
      * The {@link Ext.data.Store} this list should use as its data source
@@ -102,7 +102,7 @@ filter : [{"type":"list","value":"small,medium","field":"size"}]
      * Template method that is to initialize the filter.
      * @param {Object} config
      */
-    init : function (config) {
+    init: function (config) {
         this.dt = Ext.create('Ext.util.DelayedTask', this.fireUpdate, this);
     },
 
@@ -112,7 +112,7 @@ filter : [{"type":"list","value":"small,medium","field":"size"}]
      * @param {Object} config Filter configuration
      * @return {Ext.menu.Menu}
      */
-    createMenu: function(config) {
+    createMenu: function (config) {
         var menu = Ext.create('Ext.ux.grid.menu.ListMenu', config);
         menu.on('checkchange', this.onCheckChange, this);
         return menu;
@@ -123,7 +123,7 @@ filter : [{"type":"list","value":"small,medium","field":"size"}]
      * Template method that is to get and return the value of the filter.
      * @return {String} The value of this filter
      */
-    getValue : function () {
+    getValue: function () {
         return this.menu.getSelected();
     },
     /**
@@ -131,7 +131,7 @@ filter : [{"type":"list","value":"small,medium","field":"size"}]
      * Template method that is to set the value of the filter.
      * @param {Object} value The value to set the filter
      */
-    setValue : function (value) {
+    setValue: function (value) {
         this.menu.setSelected(value);
         this.fireEvent('update', this);
     },
@@ -142,7 +142,7 @@ filter : [{"type":"list","value":"small,medium","field":"size"}]
      * has enough configuration information to be activated.
      * @return {Boolean}
      */
-    isActivatable : function () {
+    isActivatable: function () {
         return this.getValue().length > 0;
     },
 
@@ -153,12 +153,12 @@ filter : [{"type":"list","value":"small,medium","field":"size"}]
      * @return {Object/Array} An object or collection of objects containing
      * key value pairs representing the current configuration of the filter.
      */
-    getSerialArgs : function () {
+    getSerialArgs: function () {
         return {type: 'list', value: this.phpMode ? this.getValue().join(',') : this.getValue()};
     },
 
     /** @private */
-    onCheckChange : function(){
+    onCheckChange: function () {
         this.dt.delay(this.updateBuffer);
     },
 
@@ -170,7 +170,7 @@ filter : [{"type":"list","value":"small,medium","field":"size"}]
      * @return {Boolean} true if the record is valid within the bounds
      * of the filter, false otherwise.
      */
-    validateRecord : function (record) {
+    validateRecord: function (record) {
         var valuesArray = this.getValue();
         return Ext.Array.indexOf(valuesArray, record.get(this.dataIndex)) > -1;
     }

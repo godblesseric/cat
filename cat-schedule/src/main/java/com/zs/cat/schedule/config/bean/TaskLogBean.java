@@ -3,89 +3,89 @@ package com.zs.cat.schedule.config.bean;
 import java.io.Serializable;
 import java.util.Date;
 
-public class TaskLogBean implements Serializable{
+public class TaskLogBean implements Serializable {
 
-	
-	// 表字段映射
-	private int logId;
-	private int configId;
-	private int state;
-	private String results;
-	private int sucessNum;
-	private int failNum;
-	private Date beginDate;
-	private Date endDate;
-	private String remarks;
-	
-	public int getLogId() {
-		return logId;
-	}
 
-	public void setLogId(int logId) {
-		this.logId = logId;
-	}
+    // 表字段映射
+    private int logId;
+    private int configId;
+    private int state;
+    private String results;
+    private int sucessNum;
+    private int failNum;
+    private Date beginDate;
+    private Date endDate;
+    private String remarks;
 
-	public int getConfigId() {
-		return configId;
-	}
+    public int getLogId() {
+        return logId;
+    }
 
-	public void setConfigId(int configId) {
-		this.configId = configId;
-	}
+    public void setLogId(int logId) {
+        this.logId = logId;
+    }
 
-	public int getState() {
-		return state;
-	}
+    public int getConfigId() {
+        return configId;
+    }
 
-	public void setState(int state) {
-		this.state = state;
-	}
+    public void setConfigId(int configId) {
+        this.configId = configId;
+    }
 
-	public String getResults() {
-		return results;
-	}
+    public int getState() {
+        return state;
+    }
 
-	public void setResults(String results) {
-		this.results = results;
-	}
+    public void setState(int state) {
+        this.state = state;
+    }
 
-	public int getSucessNum() {
-		return sucessNum;
-	}
+    public String getResults() {
+        return results;
+    }
 
-	public void setSucessNum(int sucessNum) {
-		this.sucessNum = sucessNum;
-	}
+    public void setResults(String results) {
+        this.results = results;
+    }
 
-	public int getFailNum() {
-		return failNum;
-	}
+    public int getSucessNum() {
+        return sucessNum;
+    }
 
-	public void setFailNum(int failNum) {
-		this.failNum = failNum;
-	}
+    public void setSucessNum(int sucessNum) {
+        this.sucessNum = sucessNum;
+    }
 
-	public Date getBeginDate() {
-		return beginDate;
-	}
+    public int getFailNum() {
+        return failNum;
+    }
 
-	public void setBeginDate(Date beginDate) {
-		this.beginDate = beginDate;
-	}
+    public void setFailNum(int failNum) {
+        this.failNum = failNum;
+    }
 
-	public Date getEndDate() {
-		return endDate;
-	}
+    public Date getBeginDate() {
+        return beginDate;
+    }
 
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
+    public void setBeginDate(Date beginDate) {
+        this.beginDate = beginDate;
+    }
 
-	public String getRemarks() {
-		return remarks;
-	}
+    public Date getEndDate() {
+        return endDate;
+    }
 
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
-	}
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 }

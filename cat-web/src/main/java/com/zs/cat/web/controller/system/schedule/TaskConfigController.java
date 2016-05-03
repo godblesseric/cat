@@ -42,7 +42,7 @@ import com.zs.cat.schedule.config.service.ITaskConfigService;
 import com.zs.cat.web.entity.system.Role;
 import com.zs.cat.web.util.Jurisdiction;
 
-*//** 
+*//**
  * 类名称：UserController
  * 创建人：zs 
  * 创建时间：2014年6月28日
@@ -59,9 +59,9 @@ public class TaskConfigController extends BaseController {
 	
 	
 	*//**
-	 * 保存用户
-	 *//*
-	@RequestMapping(value="/save")
+ * 保存用户
+ *//*
+    @RequestMapping(value="/save")
 	public ModelAndView save(PrintWriter out) throws Exception{
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
@@ -87,8 +87,8 @@ public class TaskConfigController extends BaseController {
 	}
 	
 	*//**
-	 * 判断用户名是否存在
-	 *//*
+ * 判断用户名是否存在
+ *//*
 	@RequestMapping(value="/hasU")
 	@ResponseBody
 	public Object hasU(){
@@ -108,8 +108,8 @@ public class TaskConfigController extends BaseController {
 	}
 	
 	*//**
-	 * 判断邮箱是否存在
-	 *//*
+ * 判断邮箱是否存在
+ *//*
 	@RequestMapping(value="/hasE")
 	@ResponseBody
 	public Object hasE(){
@@ -130,8 +130,8 @@ public class TaskConfigController extends BaseController {
 	}
 	
 	*//**
-	 * 判断编码是否存在
-	 *//*
+ * 判断编码是否存在
+ *//*
 	@RequestMapping(value="/hasN")
 	@ResponseBody
 	public Object hasN(){
@@ -151,8 +151,8 @@ public class TaskConfigController extends BaseController {
 	}
 	
 	*//**
-	 * 修改用户
-	 *//*
+ * 修改用户
+ *//*
 	@RequestMapping(value="/editU")
 	public ModelAndView editU() throws Exception{
 		ModelAndView mv = this.getModelAndView();
@@ -168,8 +168,8 @@ public class TaskConfigController extends BaseController {
 	}
 	
 	*//**
-	 * 去修改用户页面
-	 *//*
+ * 去修改用户页面
+ *//*
 	@RequestMapping(value="/goEditU")
 	public ModelAndView goEditU() throws Exception{
 		ModelAndView mv = this.getModelAndView();
@@ -198,8 +198,8 @@ public class TaskConfigController extends BaseController {
 	}
 	
 	*//**
-	 * 去新增用户页面
-	 *//*
+ * 去新增用户页面
+ *//*
 	@RequestMapping(value="/goAddU")
 	public ModelAndView goAddU()throws Exception{
 		ModelAndView mv = this.getModelAndView();
@@ -218,8 +218,8 @@ public class TaskConfigController extends BaseController {
 	}
 	
 	*//**
-	 * 显示用户列表(用户组)
-	 *//*
+ * 显示用户列表(用户组)
+ *//*
 	@RequestMapping(value="/listUsers")
 	public ModelAndView listUsers(Page page)throws Exception{
 		ModelAndView mv = this.getModelAndView();
@@ -259,8 +259,8 @@ public class TaskConfigController extends BaseController {
 
 	
 	*//**
-	 * 显示用户列表(tab方式)
-	 *//*
+ * 显示用户列表(tab方式)
+ *//*
 	@RequestMapping(value="/listtabUsers")
 	public ModelAndView listtabUsers(Page page)throws Exception{
 		ModelAndView mv = this.getModelAndView();
@@ -275,8 +275,8 @@ public class TaskConfigController extends BaseController {
 	}
 	
 	*//**
-	 * 删除用户
-	 *//*
+ * 删除用户
+ *//*
 	@RequestMapping(value="/deleteU")
 	public void deleteU(PrintWriter out){
 		PageData pd = new PageData();
@@ -292,8 +292,8 @@ public class TaskConfigController extends BaseController {
 	}
 	
 	*//**
-	 * 批量删除
-	 *//*
+ * 批量删除
+ *//*
 	@RequestMapping(value="/deleteAllU")
 	@ResponseBody
 	public Object deleteAllU() {
@@ -393,8 +393,8 @@ public class TaskConfigController extends BaseController {
 	}
 	
 	*//**
-	 * 打开上传EXCEL页面
-	 *//*
+ * 打开上传EXCEL页面
+ *//*
 	@RequestMapping(value="/goUploadExcel")
 	public ModelAndView goUploadExcel()throws Exception{
 		ModelAndView mv = this.getModelAndView();
@@ -403,8 +403,8 @@ public class TaskConfigController extends BaseController {
 	}
 	
 	*//**
-	 * 下载模版
-	 *//*
+ * 下载模版
+ *//*
 	@RequestMapping(value="/downExcel")
 	public void downExcel(HttpServletResponse response)throws Exception{
 		
@@ -413,8 +413,8 @@ public class TaskConfigController extends BaseController {
 	}
 	
 	*//**
-	 * 从EXCEL导入到数据库
-	 *//*
+ * 从EXCEL导入到数据库
+ *//*
 	@RequestMapping(value="/readExcel")
 	public ModelAndView readExcel(
 			@RequestParam(value="excel",required=false) MultipartFile file
@@ -439,12 +439,12 @@ public class TaskConfigController extends BaseController {
 			
 			pd.put("ROLE_ID", roleList.get(0).getROLE_ID());	//设置角色ID为随便第一个
 			*//**
-			 * var0 :编号
-			 * var1 :姓名
-			 * var2 :手机
-			 * var3 :邮箱
-			 * var4 :备注
-			 *//*
+ * var0 :编号
+ * var1 :姓名
+ * var2 :手机
+ * var3 :邮箱
+ * var4 :备注
+ *//*
 			for(int i=0;i<listPd.size();i++){		
 				pd.put("USER_ID", this.get32UUID());										//ID
 				pd.put("NAME", listPd.get(i).getString("var1"));							//姓名

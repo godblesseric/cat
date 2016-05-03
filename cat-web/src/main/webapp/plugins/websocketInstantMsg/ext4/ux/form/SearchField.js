@@ -1,35 +1,35 @@
 Ext.define('Ext.ux.form.SearchField', {
     extend: 'Ext.form.field.Trigger',
-    
+
     alias: 'widget.searchfield',
-    
+
     trigger1Cls: Ext.baseCSSPrefix + 'form-clear-trigger',
-    
+
     trigger2Cls: Ext.baseCSSPrefix + 'form-search-trigger',
-    
-    hasSearch : false,
-    paramName : 'query',
-    
-    initComponent: function(){
+
+    hasSearch: false,
+    paramName: 'query',
+
+    initComponent: function () {
         this.callParent(arguments);
-        this.on('specialkey', function(f, e){
-            if(e.getKey() == e.ENTER){
+        this.on('specialkey', function (f, e) {
+            if (e.getKey() == e.ENTER) {
                 this.onTrigger2Click();
             }
         }, this);
     },
-    
-    afterRender: function(){
+
+    afterRender: function () {
         this.callParent();
-        this.triggerEl.item(0).setDisplayed('none');  
+        this.triggerEl.item(0).setDisplayed('none');
     },
-    
-    onTrigger1Click : function(){
+
+    onTrigger1Click: function () {
         var me = this,
             store = me.store,
             proxy = store.getProxy(),
             val;
-            
+
         if (me.hasSearch) {
             me.setValue('');
             proxy.extraParams[me.paramName] = '';
@@ -41,12 +41,12 @@ Ext.define('Ext.ux.form.SearchField', {
         }
     },
 
-    onTrigger2Click : function(){
+    onTrigger2Click: function () {
         var me = this,
             store = me.store,
             proxy = store.getProxy(),
             value = me.getValue();
-            
+
         if (value.length < 1) {
             me.onTrigger1Click();
             return;

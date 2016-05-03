@@ -15,48 +15,48 @@ import com.zs.cat.schedule.config.service.ITaskLogService;
 @Service("taskLogService")
 public class TaskLogService implements ITaskLogService {
 
-	private static final Logger logger = LoggerFactory.getLogger(TaskLogService.class);
-	
-	@Resource
-	TaskLogBeanMapper taskLogDAO;
-	
-	@Override
-	public void saveOrUpdate(TaskLogBean taskLog) throws Exception {
-		try {
-			if (taskLog != null && taskLog.getLogId() > 0) {
-				taskLogDAO.updateTaskLog(taskLog);
-			} else {
-				taskLogDAO.insertTaskLog(taskLog);
-			}
-		} catch (Exception e) {
-			logger.error("新增或修改任务日志异常",e);
-		}
-	}
-	
-	@Override
-	public TaskLogBean getTaskLogByKey(int taskLogId) throws Exception {
-		try {
-			return taskLogDAO.getTaskLogByKey(taskLogId);
-		} catch (Exception e) {
-			logger.error("查询任务日志异常",e);
-		}
-		return null;
-	}
-	
-	@Override
-	public int deleteTaskLog(TaskLogBean taskLog) throws Exception {
-		return 0;
-	}
+    private static final Logger logger = LoggerFactory.getLogger(TaskLogService.class);
 
-	
-	@Override
-	public List<TaskLogBean> queryTaskLogPage(TaskLogBean taskLog)
-			throws Exception {
-		try {
-			return taskLogDAO.queryTaskLogPage(taskLog);
-		} catch (Exception e) {
-			logger.error("查询任务日志异常",e);
-		}
-		return null;
-	}
+    @Resource
+    TaskLogBeanMapper taskLogDAO;
+
+    @Override
+    public void saveOrUpdate(TaskLogBean taskLog) throws Exception {
+        try {
+            if (taskLog != null && taskLog.getLogId() > 0) {
+                taskLogDAO.updateTaskLog(taskLog);
+            } else {
+                taskLogDAO.insertTaskLog(taskLog);
+            }
+        } catch (Exception e) {
+            logger.error("新增或修改任务日志异常", e);
+        }
+    }
+
+    @Override
+    public TaskLogBean getTaskLogByKey(int taskLogId) throws Exception {
+        try {
+            return taskLogDAO.getTaskLogByKey(taskLogId);
+        } catch (Exception e) {
+            logger.error("查询任务日志异常", e);
+        }
+        return null;
+    }
+
+    @Override
+    public int deleteTaskLog(TaskLogBean taskLog) throws Exception {
+        return 0;
+    }
+
+
+    @Override
+    public List<TaskLogBean> queryTaskLogPage(TaskLogBean taskLog)
+            throws Exception {
+        try {
+            return taskLogDAO.queryTaskLogPage(taskLog);
+        } catch (Exception e) {
+            logger.error("查询任务日志异常", e);
+        }
+        return null;
+    }
 }

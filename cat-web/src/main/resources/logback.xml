@@ -9,45 +9,45 @@
 
     <!-- ================= 按输出级别分类 =================== -->
     <!--<appender name="in" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
-        <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">-->
-            <!--<level>${logLevel}</level>-->
-            <!--<onMatch>ACCEPT</onMatch>-->
-            <!--<onMismatch>DENY</onMismatch>-->
-        <!--</filter>-->
-        <!--<file>${logRoot}/zs_web_in.log</file>-->
-        <!--<encoder>-->
-            <!--&lt;!&ndash;<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>&ndash;&gt;-->
-            <!--<pattern>%date %level [%thread] %logger{10} [%file] %msg%n</pattern>-->
-        <!--</encoder>-->
-        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
-            <!--&lt;!&ndash; rollover daily &ndash;&gt;-->
-            <!--<fileNamePattern>${logRoot}/zs_web_in_%d{yyyy-MM-dd}.%i.log</fileNamePattern>-->
-            <!--<maxHistory>30</maxHistory>-->
-            <!--<TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">-->
-                <!--<maxFileSize>500MB</maxFileSize>-->
-            <!--</TimeBasedFileNamingAndTriggeringPolicy>-->
-        <!--</rollingPolicy>-->
+    <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">-->
+    <!--<level>${logLevel}</level>-->
+    <!--<onMatch>ACCEPT</onMatch>-->
+    <!--<onMismatch>DENY</onMismatch>-->
+    <!--</filter>-->
+    <!--<file>${logRoot}/zs_web_in.log</file>-->
+    <!--<encoder>-->
+    <!--&lt;!&ndash;<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>&ndash;&gt;-->
+    <!--<pattern>%date %level [%thread] %logger{10} [%file] %msg%n</pattern>-->
+    <!--</encoder>-->
+    <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+    <!--&lt;!&ndash; rollover daily &ndash;&gt;-->
+    <!--<fileNamePattern>${logRoot}/zs_web_in_%d{yyyy-MM-dd}.%i.log</fileNamePattern>-->
+    <!--<maxHistory>30</maxHistory>-->
+    <!--<TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">-->
+    <!--<maxFileSize>500MB</maxFileSize>-->
+    <!--</TimeBasedFileNamingAndTriggeringPolicy>-->
+    <!--</rollingPolicy>-->
     <!--</appender>-->
 
     <!--<appender name="out" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
-        <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">-->
-            <!--<level>${logLevel}</level>-->
-            <!--<onMatch>ACCEPT</onMatch>-->
-            <!--<onMismatch>DENY</onMismatch>-->
-        <!--</filter>-->
-        <!--<file>${logRoot}/zs_web_out.log</file>-->
-        <!--<encoder>-->
-            <!--&lt;!&ndash;<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>&ndash;&gt;-->
-            <!--<pattern>%date %level [%thread] %logger{10} [%file] %msg%n</pattern>-->
-        <!--</encoder>-->
-        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
-            <!--&lt;!&ndash; rollover daily &ndash;&gt;-->
-            <!--<fileNamePattern>${logRoot}/zs_web_out_%d{yyyyMMdd}.%i.log</fileNamePattern>-->
-            <!--<maxHistory>30</maxHistory>-->
-            <!--<TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">-->
-                <!--<maxFileSize>500MB</maxFileSize>-->
-            <!--</TimeBasedFileNamingAndTriggeringPolicy>-->
-        <!--</rollingPolicy>-->
+    <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">-->
+    <!--<level>${logLevel}</level>-->
+    <!--<onMatch>ACCEPT</onMatch>-->
+    <!--<onMismatch>DENY</onMismatch>-->
+    <!--</filter>-->
+    <!--<file>${logRoot}/zs_web_out.log</file>-->
+    <!--<encoder>-->
+    <!--&lt;!&ndash;<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>&ndash;&gt;-->
+    <!--<pattern>%date %level [%thread] %logger{10} [%file] %msg%n</pattern>-->
+    <!--</encoder>-->
+    <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+    <!--&lt;!&ndash; rollover daily &ndash;&gt;-->
+    <!--<fileNamePattern>${logRoot}/zs_web_out_%d{yyyyMMdd}.%i.log</fileNamePattern>-->
+    <!--<maxHistory>30</maxHistory>-->
+    <!--<TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">-->
+    <!--<maxFileSize>500MB</maxFileSize>-->
+    <!--</TimeBasedFileNamingAndTriggeringPolicy>-->
+    <!--</rollingPolicy>-->
     <!--</appender>-->
 
 
@@ -112,7 +112,7 @@
     </logger>-->
     <logger name="org.apache.zookeeper" level="WARN"/>
     <logger name="com.alibaba.dubbo" level="WARN"/>
-	<logger name="com.mchange.v2.c3p0" level="WARN"/>
+    <logger name="com.mchange.v2.c3p0" level="WARN"/>
     <logger name="org.springframework" level="WARN" additivity="false">
         <appender-ref ref="${logDefaultFile}"/>
         <appender-ref ref="error"/>
@@ -135,10 +135,10 @@
     </logger>
 
     <root>
-        <level value="${logLevel}" />
-        <appender-ref ref="${logDefaultFile}" />
-        <appender-ref ref="${logErrorDefaultFile}" />
-        <appender-ref ref="STDOUT" />
+        <level value="${logLevel}"/>
+        <appender-ref ref="${logDefaultFile}"/>
+        <appender-ref ref="${logErrorDefaultFile}"/>
+        <appender-ref ref="STDOUT"/>
     </root>
 
 </configuration>

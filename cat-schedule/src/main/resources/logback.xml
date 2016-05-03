@@ -135,10 +135,10 @@
     </logger>
 
     <root>
-        <level value="${logLevel}" />
-        <appender-ref ref="${logDefaultFile}" />
-        <appender-ref ref="${logErrorDefaultFile}" />
-        <appender-ref ref="STDOUT" />
+        <level value="${logLevel}"/>
+        <appender-ref ref="${logDefaultFile}"/>
+        <appender-ref ref="${logErrorDefaultFile}"/>
+        <appender-ref ref="STDOUT"/>
     </root>
 
 </configuration>

@@ -1,11 +1,11 @@
 /**
-* @class Ext.ux.ProgressBarPager
-* @extends Object
-* Plugin for displaying a progressbar inside of a paging toolbar instead of plain text
-* @constructor
-* Create a new ItemSelector
-* @param {Object} config Configuration options
-*/
+ * @class Ext.ux.ProgressBarPager
+ * @extends Object
+ * Plugin for displaying a progressbar inside of a paging toolbar instead of plain text
+ * @constructor
+ * Create a new ItemSelector
+ * @param {Object} config Configuration options
+ */
 Ext.define('Ext.ux.ProgressBarPager', {
     extend: 'Object',
 
@@ -13,26 +13,26 @@ Ext.define('Ext.ux.ProgressBarPager', {
     /**
      * @cfg {Integer} width
      * <p>The default progress bar width.  Default is 225.</p>
-    */
-    width   : 225,
+     */
+    width: 225,
     /**
      * @cfg {String} defaultText
-    * <p>The text to display while the store is loading.  Default is 'Loading...'</p>
+     * <p>The text to display while the store is loading.  Default is 'Loading...'</p>
      */
-    defaultText    : 'Loading...',
+    defaultText: 'Loading...',
     /**
      * @cfg {Object} defaultAnimCfg
      * <p>A {@link Ext.fx.Anim Ext.fx.Anim} configuration object.</p>
      */
-    constructor : function(config) {
+    constructor: function (config) {
         if (config) {
             Ext.apply(this, config);
         }
     },
     //public
-    init : function (parent) {
+    init: function (parent) {
         var displayItem;
-        if(parent.displayInfo) {
+        if (parent.displayInfo) {
             this.parent = parent;
 
             displayItem = parent.child("#displayItem");
@@ -41,9 +41,9 @@ Ext.define('Ext.ux.ProgressBarPager', {
             }
 
             this.progressBar = Ext.create('Ext.ProgressBar', {
-                text    : this.defaultText,
-                width   : this.width,
-                animate : this.defaultAnimCfg
+                text: this.defaultText,
+                width: this.width,
+                animate: this.defaultAnimCfg
             });
 
             parent.displayItem = this.progressBar;
@@ -52,39 +52,39 @@ Ext.define('Ext.ux.ProgressBarPager', {
             parent.doLayout();
             Ext.apply(parent, this.parentOverrides);
 
-            this.progressBar.on('render', function(pb) {
+            this.progressBar.on('render', function (pb) {
                 pb.mon(pb.getEl().applyStyles('cursor:pointer'), 'click', this.handleProgressBarClick, this);
             }, this, {single: true});
         }
     },
     // private
     // This method handles the click for the progress bar
-    handleProgressBarClick : function(e){
+    handleProgressBarClick: function (e) {
         var parent = this.parent,
             displayItem = parent.displayItem,
             box = this.progressBar.getBox(),
             xy = e.getXY(),
-            position = xy[0]- box.x,
-            pages = Math.ceil(parent.store.getTotalCount()/parent.pageSize),
-            newpage = Math.ceil(position/(displayItem.width/pages));
+            position = xy[0] - box.x,
+            pages = Math.ceil(parent.store.getTotalCount() / parent.pageSize),
+            newpage = Math.ceil(position / (displayItem.width / pages));
 
         parent.store.loadPage(newpage);
     },
 
     // private, overriddes
-    parentOverrides  : {
+    parentOverrides: {
         // private
         // This method updates the information via the progress bar.
-        updateInfo : function(){
-            if(this.displayItem){
+        updateInfo: function () {
+            if (this.displayItem) {
                 var count = this.store.getCount(),
                     pageData = this.getPageData(),
                     message = count === 0 ?
-                    this.emptyMsg :
-                    Ext.String.format(
-                        this.displayMsg,
-                        pageData.fromRecord, pageData.toRecord, this.store.getTotalCount()
-                    ),
+                        this.emptyMsg :
+                        Ext.String.format(
+                            this.displayMsg,
+                            pageData.fromRecord, pageData.toRecord, this.store.getTotalCount()
+                        ),
                     percentage = pageData.currentPage / pageData.pageCount;
 
                 this.displayItem.updateProgress(percentage, message, this.animate || this.defaultAnimConfig);

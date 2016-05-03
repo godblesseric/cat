@@ -16,7 +16,7 @@ Ext.define('Ext.ux.layout.component.form.ItemSelector', {
      */
     defaultHeight: 200,
 
-    sizeBodyContents: function(width, height) {
+    sizeBodyContents: function (width, height) {
         var me = this;
 
         if (!Ext.isNumber(height)) {

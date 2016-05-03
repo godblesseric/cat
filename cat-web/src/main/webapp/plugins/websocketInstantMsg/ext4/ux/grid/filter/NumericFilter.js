@@ -4,7 +4,7 @@
  * Filters using an Ext.ux.grid.menu.RangeMenu.
  * <p><b><u>Example Usage:</u></b></p>
  * <pre><code>
-var filters = Ext.create('Ext.ux.grid.GridFilters', {
+ var filters = Ext.create('Ext.ux.grid.GridFilters', {
     ...
     filters: [{
         type: 'numeric',
@@ -26,7 +26,7 @@ Ext.define('Ext.ux.grid.filter.NumericFilter', {
      * @param {Object} config Filter configuration
      * @return {Ext.menu.Menu}
      */
-    createMenu: function(config) {
+    createMenu: function (config) {
         var me = this,
             menu;
         menu = Ext.create('Ext.ux.grid.menu.RangeMenu', config);
@@ -39,7 +39,7 @@ Ext.define('Ext.ux.grid.filter.NumericFilter', {
      * Template method that is to get and return the value of the filter.
      * @return {String} The value of this filter
      */
-    getValue : function () {
+    getValue: function () {
         return this.menu.getValue();
     },
 
@@ -48,7 +48,7 @@ Ext.define('Ext.ux.grid.filter.NumericFilter', {
      * Template method that is to set the value of the filter.
      * @param {Object} value The value to set the filter
      */
-    setValue : function (value) {
+    setValue: function (value) {
         this.menu.setValue(value);
     },
 
@@ -58,7 +58,7 @@ Ext.define('Ext.ux.grid.filter.NumericFilter', {
      * has enough configuration information to be activated.
      * @return {Boolean}
      */
-    isActivatable : function () {
+    isActivatable: function () {
         var values = this.getValue(),
             key;
         for (key in values) {
@@ -76,7 +76,7 @@ Ext.define('Ext.ux.grid.filter.NumericFilter', {
      * @return {Object/Array} An object or collection of objects containing
      * key value pairs representing the current configuration of the filter.
      */
-    getSerialArgs : function () {
+    getSerialArgs: function () {
         var key,
             args = [],
             values = this.menu.getValue();
@@ -97,7 +97,7 @@ Ext.define('Ext.ux.grid.filter.NumericFilter', {
      * @return {Boolean} true if the record is valid within the bounds
      * of the filter, false otherwise.
      */
-    validateRecord : function (record) {
+    validateRecord: function (record) {
         var val = record.get(this.dataIndex),
             values = this.getValue(),
             isNumber = Ext.isNumber;

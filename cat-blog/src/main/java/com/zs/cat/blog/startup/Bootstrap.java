@@ -1,4 +1,5 @@
 package com.zs.cat.blog.startup;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -10,13 +11,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.google.common.util.concurrent.AbstractIdleService;
 
 @WebListener
-public class Bootstrap extends AbstractIdleService  implements ServletContextListener{
+public class Bootstrap extends AbstractIdleService implements ServletContextListener {
 
     private ClassPathXmlApplicationContext context;
     private static final Logger LOGGER = LoggerFactory.getLogger(Bootstrap.class);
 
     public static void main(String[] args) {
-    	Bootstrap bootstrap = new Bootstrap();
+        Bootstrap bootstrap = new Bootstrap();
         bootstrap.startAsync();
         try {
             Object lock = new Object();
@@ -26,11 +27,11 @@ public class Bootstrap extends AbstractIdleService  implements ServletContextLis
                 }
             }
         } catch (InterruptedException ex) {
-        	LOGGER.error("ignore interruption",ex);
+            LOGGER.error("ignore interruption", ex);
         }
     }
 
-   
+
     @Override
     protected void startUp() throws Exception {
         LOGGER.info("===================cat-blog START BEGIN==========================");
@@ -39,36 +40,36 @@ public class Bootstrap extends AbstractIdleService  implements ServletContextLis
         context.start();
         context.registerShutdownHook();
         LOGGER.info("zs-filepush service started successfully");
-        Long interval=(System.nanoTime()-startTime)/1000000000;
+        Long interval = (System.nanoTime() - startTime) / 1000000000;
         LOGGER.info("zs-CORE service STARTED UP successfully in {} seconds...", interval);
         LOGGER.info("===================cat-blog START END==========================");
 
     }
 
-    
+
     @Override
     protected void shutDown() throws Exception {
         context.stop();
         LOGGER.info("service stopped successfully");
     }
-    
+
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         LOGGER.info("cat-blog service started ");
-     try {
+        try {
             startUp();
-     } catch (Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
-     LOGGER.error("ignore interruption ");
-     }
+            LOGGER.error("ignore interruption ");
+        }
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
         try {
             shutDown();
-     } catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-     }
+        }
     }
 }

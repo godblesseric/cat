@@ -13,12 +13,12 @@
  */
 Ext.define('Ext.ux.grid.TransformGrid', {
     extend: 'Ext.grid.Panel',
-    
-    constructor: function(table, config) {
+
+    constructor: function (table, config) {
         config = Ext.apply({}, config);
         table = this.table = Ext.get(table);
-    
-        var configFields = config.fields || [], 
+
+        var configFields = config.fields || [],
             configColumns = config.columns || [],
             fields = [],
             cols = [],
@@ -33,18 +33,18 @@ Ext.define('Ext.ux.grid.TransformGrid', {
             col,
             text,
             name;
-    
+
         for (; i < len; ++i) {
             col = headers[i];
-        
+
             text = col.innerHTML;
             name = 'tcol-' + i;
-        
+
             fields.push(Ext.applyIf(configFields[i] || {}, {
                 name: name,
                 mapping: 'td:nth(' + (i + 1) + ')/@innerHTML'
             }));
-        
+
             cols.push(Ext.applyIf(configColumns[i] || {}, {
                 text: text,
                 dataIndex: name,
@@ -53,24 +53,24 @@ Ext.define('Ext.ux.grid.TransformGrid', {
                 sortable: true
             }));
         }
-        
+
         if (config.width) {
-            width = config.width;   
+            width = config.width;
         } else {
             width = table.getWidth();
         }
-        
+
         if (config.height) {
             height = config.height;
         }
-    
+
         if (config.remove !== false) {
             // Don't use table.remove() as that destroys the row/cell data in the table in
             // IE6-7 so it cannot be read by the data reader.
             data.parentNode.removeChild(data);
         }
-        
-    
+
+
         Ext.applyIf(config, {
             store: {
                 data: data,
@@ -81,7 +81,7 @@ Ext.define('Ext.ux.grid.TransformGrid', {
                         record: 'tbody tr',
                         type: 'xml'
                     }
-                }    
+                }
             },
             columns: cols,
             width: width,
@@ -89,10 +89,10 @@ Ext.define('Ext.ux.grid.TransformGrid', {
             height: height,
             el: ct
         });
-        this.callParent([config]);    
+        this.callParent([config]);
     },
 
-    onDestroy: function() {
+    onDestroy: function () {
         this.callParent();
         this.table.remove();
         delete this.table;

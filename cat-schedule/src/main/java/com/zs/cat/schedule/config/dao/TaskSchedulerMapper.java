@@ -19,8 +19,8 @@ public interface TaskSchedulerMapper {
 
     int updateByPrimaryKeySelective(TaskScheduler record);
 
-	int updateByPrimaryKey(TaskScheduler record);
+    int updateByPrimaryKey(TaskScheduler record);
 
-	public List<TaskScheduler> getTaskGroupFlag(Map<String, Object> paramsMap);
+    public List<TaskScheduler> getTaskGroupFlag(Map<String, Object> paramsMap);
 
 }

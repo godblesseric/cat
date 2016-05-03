@@ -1,17 +1,17 @@
 /*
 
-This file is part of Ext JS 4
+ This file is part of Ext JS 4
 
-Copyright (c) 2011 Sencha Inc
+ Copyright (c) 2011 Sencha Inc
 
-Contact:  http://www.sencha.com/contact
+ Contact:  http://www.sencha.com/contact
 
-GNU General Public License Usage
-This file may be used under the terms of the GNU General Public License version 3.0 as published by the Free Software Foundation and appearing in the file LICENSE included in the packaging of this file.  Please review the following information to ensure the GNU General Public License version 3.0 requirements will be met: http://www.gnu.org/copyleft/gpl.html.
+ GNU General Public License Usage
+ This file may be used under the terms of the GNU General Public License version 3.0 as published by the Free Software Foundation and appearing in the file LICENSE included in the packaging of this file.  Please review the following information to ensure the GNU General Public License version 3.0 requirements will be met: http://www.gnu.org/copyleft/gpl.html.
 
-If you are unsure which license is appropriate for your use, please contact the sales department at http://www.sencha.com/contact.
+ If you are unsure which license is appropriate for your use, please contact the sales department at http://www.sencha.com/contact.
 
-*/
+ */
 /**
  * Ext.App
  * @extends Ext.util.Observable
@@ -23,12 +23,12 @@ Ext.define('Ext.App', {
     /***
      * response status codes.
      */
-    STATUS_EXCEPTION :          'exception',
-    STATUS_VALIDATION_ERROR :   "validation",
-    STATUS_ERROR:               "error",
-    STATUS_NOTICE:              "notice",
-    STATUS_OK:                  "ok",
-    STATUS_HELP:                "help",
+    STATUS_EXCEPTION: 'exception',
+    STATUS_VALIDATION_ERROR: "validation",
+    STATUS_ERROR: "error",
+    STATUS_NOTICE: "notice",
+    STATUS_OK: "ok",
+    STATUS_HELP: "help",
 
     /**
      * @cfg {Object} api
@@ -41,9 +41,9 @@ Ext.define('Ext.App', {
     },
 
     // private, ref to message-box Element.
-    msgCt : null,
+    msgCt: null,
 
-    constructor: function(config) {
+    constructor: function (config) {
         this.views = [];
 
         this.initStateProvider();
@@ -60,23 +60,23 @@ Ext.define('Ext.App', {
     },
 
     // @protected, onReady, executes when Ext.onReady fires.
-    onReady : function() {
+    onReady: function () {
         // create the msgBox container.  used for App.setAlert
-        this.msgCt = Ext.core.DomHelper.insertFirst(document.body, {id:'msg-div'}, true);
+        this.msgCt = Ext.core.DomHelper.insertFirst(document.body, {id: 'msg-div'}, true);
         this.msgCt.setStyle('position', 'absolute');
         this.msgCt.setStyle('z-index', 9999);
         this.msgCt.setWidth(300);
     },
 
-    initStateProvider : function() {
+    initStateProvider: function () {
         /*
          * set days to be however long you think cookies should last
          */
         var days = '';        // expires when browser closes
-        if(days){
+        if (days) {
             var date = new Date();
-            date.setTime(date.getTime()+(days*24*60*60*1000));
-            var exptime = "; expires="+date.toGMTString();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var exptime = "; expires=" + date.toGMTString();
         } else {
             var exptime = null;
         }
@@ -95,7 +95,7 @@ Ext.define('Ext.App', {
      * register an application view component.
      * @param {Object} view
      */
-    registerView : function(view) {
+    registerView: function (view) {
         this.views.push(view);
     },
 
@@ -103,7 +103,7 @@ Ext.define('Ext.App', {
      * getViews
      * return list of registered views
      */
-    getViews : function() {
+    getViews: function () {
         return this.views;
     },
 
@@ -112,7 +112,7 @@ Ext.define('Ext.App', {
      * registers new actions for API
      * @param {Object} actions
      */
-    registerActions : function(actions) {
+    registerActions: function (actions) {
         Ext.apply(this.api.actions, actions);
     },
 
@@ -120,7 +120,7 @@ Ext.define('Ext.App', {
      * getAPI
      * return Ext Remoting api
      */
-    getAPI : function() {
+    getAPI: function () {
         return this.api;
     },
 
@@ -130,7 +130,7 @@ Ext.define('Ext.App', {
      * @param {String} msg
      * @param {Bool} status
      */
-    setAlert : function(status, msg) {
+    setAlert: function (status, msg) {
         this.addMessage(status, msg);
     },
 
@@ -139,7 +139,7 @@ Ext.define('Ext.App', {
      * @param {String} msg
      * @param {Bool} status
      */
-    addMessage : function(status, msg) {
+    addMessage: function (status, msg) {
         var delay = 3;    // <-- default delay of msg box is 1 second.
         if (status == false) {
             delay = 5;    // <-- when status is error, msg box delay is 3 seconds.
@@ -154,13 +154,13 @@ Ext.define('Ext.App', {
         }
 
         this.msgCt.alignTo(document, 't-t');
-        Ext.core.DomHelper.append(this.msgCt, {html:this.buildMessageBox(status, String.format.apply(String, Array.prototype.slice.call(arguments, 1)))}, true).slideIn('t').pause(delay).ghost("t", {remove:true});
+        Ext.core.DomHelper.append(this.msgCt, {html: this.buildMessageBox(status, String.format.apply(String, Array.prototype.slice.call(arguments, 1)))}, true).slideIn('t').pause(delay).ghost("t", {remove: true});
     },
 
     /***
      * buildMessageBox
      */
-    buildMessageBox : function(title, msg) {
+    buildMessageBox: function (title, msg) {
         switch (title) {
             case true:
                 title = this.STATUS_OK;
@@ -172,7 +172,7 @@ Ext.define('Ext.App', {
         return [
             '<div class="app-msg">',
             '<div class="x-box-tl"><div class="x-box-tr"><div class="x-box-tc"></div></div></div>',
-            '<div class="x-box-ml"><div class="x-box-mr"><div class="x-box-mc"><h3 class="x-icon-text icon-status-' + title + '">', title, '</h3>', msg, '</div></div></div>',
+                '<div class="x-box-ml"><div class="x-box-mr"><div class="x-box-mc"><h3 class="x-icon-text icon-status-' + title + '">', title, '</h3>', msg, '</div></div></div>',
             '<div class="x-box-bl"><div class="x-box-br"><div class="x-box-bc"></div></div></div>',
             '</div>'
         ].join('');
@@ -182,7 +182,7 @@ Ext.define('Ext.App', {
      * decodeStatusIcon
      * @param {Object} status
      */
-    decodeStatusIcon : function(status) {
+    decodeStatusIcon: function (status) {
         var iconCls = '';
         switch (status) {
             case true:
@@ -208,7 +208,7 @@ Ext.define('Ext.App', {
      * @param {Object} key
      * @param {Object} value
      */
-    setViewState : function(key, value) {
+    setViewState: function (key, value) {
         Ext.state.Manager.set(key, value);
     },
 
@@ -216,7 +216,7 @@ Ext.define('Ext.App', {
      * getViewState, aliaz for Ext.state.Manager.get
      * @param {Object} cmd
      */
-    getViewState : function(key) {
+    getViewState: function (key) {
         return Ext.state.Manager.get(key);
     },
 
@@ -226,11 +226,11 @@ Ext.define('Ext.App', {
      * @param {String} to translate
      * @return {String} translated.
      */
-    t : function(words) {
+    t: function (words) {
         return words;
     },
 
-    handleResponse : function(res) {
+    handleResponse: function (res) {
         if (res.type == this.STATUS_EXCEPTION) {
             return this.handleException(res);
         }
@@ -239,7 +239,7 @@ Ext.define('Ext.App', {
         }
     },
 
-    handleException : function(res) {
+    handleException: function (res) {
         Ext.MessageBox.alert(res.type.toUpperCase(), res.message);
     }
 });
