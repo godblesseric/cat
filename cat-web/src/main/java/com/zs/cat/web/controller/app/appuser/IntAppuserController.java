@@ -1,20 +1,17 @@
 package com.zs.cat.web.controller.app.appuser;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
+import com.zs.cat.base.service.AppuserService;
 import com.zs.cat.commons.dao.PageData;
 import com.zs.cat.commons.util.AppUtil;
 import com.zs.cat.commons.util.Tools;
 import com.zs.cat.commons.util.mail.BaseController;
-import com.zs.cat.web.service.system.appuser.AppuserService;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**

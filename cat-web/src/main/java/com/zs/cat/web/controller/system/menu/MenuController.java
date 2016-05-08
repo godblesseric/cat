@@ -1,22 +1,19 @@
 package com.zs.cat.web.controller.system.menu;
 
-import java.io.PrintWriter;
-import java.util.List;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
-
+import com.zs.cat.base.entity.Menu;
+import com.zs.cat.base.service.MenuService;
+import com.zs.cat.commons.dao.PageData;
+import com.zs.cat.commons.util.mail.BaseController;
 import net.sf.json.JSONArray;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.zs.cat.commons.dao.PageData;
-import com.zs.cat.commons.util.mail.BaseController;
-import com.zs.cat.web.entity.system.Menu;
-import com.zs.cat.web.service.system.menu.MenuService;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * 类名称：MenuController
@@ -33,7 +30,6 @@ public class MenuController extends BaseController {
     /**
      * 显示菜单列表
      *
-     * @param model
      * @return
      */
     @RequestMapping
@@ -53,7 +49,6 @@ public class MenuController extends BaseController {
     /**
      * 请求新增菜单页面
      *
-     * @param model
      * @return
      */
     @RequestMapping(value = "/toAdd")
@@ -73,7 +68,6 @@ public class MenuController extends BaseController {
      * 保存菜单信息
      *
      * @param menu
-     * @param model
      * @return
      */
     @RequestMapping(value = "/add")
@@ -210,7 +204,6 @@ public class MenuController extends BaseController {
     /**
      * 获取当前菜单的所有子菜单
      *
-     * @param menuId
      * @param response
      */
     @RequestMapping(value = "/sub")
@@ -234,7 +227,6 @@ public class MenuController extends BaseController {
     /**
      * 删除菜单
      *
-     * @param menuId
      * @param out
      */
     @RequestMapping(value = "/del")

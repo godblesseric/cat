@@ -1,9 +1,9 @@
 package com.zs.cat.web.util;
 
+import com.zs.cat.base.service.MenuService;
+import com.zs.cat.base.service.RoleService;
+import com.zs.cat.base.service.UserService;
 import com.zs.cat.commons.util.Const;
-import com.zs.cat.web.service.system.menu.MenuService;
-import com.zs.cat.web.service.system.role.RoleService;
-import com.zs.cat.web.service.system.user.UserService;
 
 
 /**
@@ -13,7 +13,6 @@ import com.zs.cat.web.service.system.user.UserService;
 public final class ServiceHelper {
 
     public static Object getService(String serviceName) {
-        //WebApplicationContextUtils.
         return Const.WEB_APP_CONTEXT.getBean(serviceName);
     }
 

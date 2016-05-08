@@ -1,15 +1,18 @@
 package com.zs.cat.web.controller.system.role;
 
-import java.io.PrintWriter;
-import java.math.BigInteger;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
+import com.zs.cat.base.entity.Menu;
+import com.zs.cat.base.entity.Role;
+import com.zs.cat.base.service.MenuService;
+import com.zs.cat.base.service.RoleService;
+import com.zs.cat.commons.dao.Page;
+import com.zs.cat.commons.dao.PageData;
+import com.zs.cat.commons.util.AppUtil;
+import com.zs.cat.commons.util.Const;
+import com.zs.cat.commons.util.RightsHelper;
+import com.zs.cat.commons.util.Tools;
+import com.zs.cat.commons.util.mail.BaseController;
+import com.zs.cat.web.util.Jurisdiction;
 import net.sf.json.JSONArray;
-
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
@@ -21,18 +24,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.zs.cat.commons.dao.Page;
-import com.zs.cat.commons.dao.PageData;
-import com.zs.cat.commons.util.AppUtil;
-import com.zs.cat.commons.util.Const;
-import com.zs.cat.commons.util.RightsHelper;
-import com.zs.cat.commons.util.Tools;
-import com.zs.cat.commons.util.mail.BaseController;
-import com.zs.cat.web.entity.system.Menu;
-import com.zs.cat.web.entity.system.Role;
-import com.zs.cat.web.service.system.menu.MenuService;
-import com.zs.cat.web.service.system.role.RoleService;
-import com.zs.cat.web.util.Jurisdiction;
+import javax.annotation.Resource;
+import java.io.PrintWriter;
+import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 类名称：RoleController
@@ -44,8 +41,10 @@ import com.zs.cat.web.util.Jurisdiction;
 public class RoleController extends BaseController {
 
     String menuUrl = "role.do"; //菜单地址(权限用)
+
     @Resource(name = "menuService")
     private MenuService menuService;
+
     @Resource(name = "roleService")
     private RoleService roleService;
 

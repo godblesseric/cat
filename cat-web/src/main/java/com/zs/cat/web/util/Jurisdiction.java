@@ -1,15 +1,14 @@
 package com.zs.cat.web.util;
 
-import java.util.List;
-import java.util.Map;
-
+import com.zs.cat.base.entity.Menu;
+import com.zs.cat.commons.util.Const;
+import com.zs.cat.commons.util.RightsHelper;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 
-import com.zs.cat.commons.util.Const;
-import com.zs.cat.commons.util.RightsHelper;
-import com.zs.cat.web.entity.system.Menu;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 权限处理

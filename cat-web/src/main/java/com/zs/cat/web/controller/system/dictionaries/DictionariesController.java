@@ -1,25 +1,19 @@
 package com.zs.cat.web.controller.system.dictionaries;
 
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
+import com.zs.cat.base.service.MenuService;
+import com.zs.cat.commons.dao.Page;
+import com.zs.cat.commons.dao.PageData;
+import com.zs.cat.commons.util.AppUtil;
+import com.zs.cat.commons.util.mail.BaseController;
+import com.zs.cat.web.service.DictionariesService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.zs.cat.commons.dao.Page;
-import com.zs.cat.commons.dao.PageData;
-import com.zs.cat.commons.util.AppUtil;
-import com.zs.cat.commons.util.mail.BaseController;
-import com.zs.cat.web.service.system.dictionaries.DictionariesService;
-import com.zs.cat.web.service.system.menu.MenuService;
+import javax.annotation.Resource;
+import java.io.PrintWriter;
+import java.util.*;
 
 /**
  * 类名称：DictionariesController

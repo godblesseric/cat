@@ -1,16 +1,15 @@
 package com.zs.cat.web.interceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.zs.cat.base.entity.User;
+import com.zs.cat.commons.util.Const;
+import com.zs.cat.web.util.Jurisdiction;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.zs.cat.commons.util.Const;
-import com.zs.cat.web.entity.system.User;
-import com.zs.cat.web.util.Jurisdiction;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 类名称：LoginHandlerInterceptor.java
@@ -26,7 +25,6 @@ public class LoginHandlerInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        // TODO Auto-generated method stub
         String path = request.getServletPath();
         if (path.matches(Const.NO_INTERCEPTOR_PATH)) {
             return true;

@@ -21,6 +21,12 @@
     <dubbo:reference interface="com.zs.cat.cms.api.service.DemoService" id="demoService" registry="cat"/>
     <dubbo:reference interface="com.zs.cat.cms.api.service.PeopleService" id="peopleService" registry="cat"/>
 
+    <!--base-->
+    <dubbo:reference interface="com.zs.cat.base.service.MenuService" id="menuService" registry="cat"/>
+    <dubbo:reference interface="com.zs.cat.base.service.UserService" id="userService" registry="cat"/>
+    <dubbo:reference interface="com.zs.cat.base.service.RoleService" id="roleService" registry="cat"/>
+    <dubbo:reference interface="com.zs.cat.base.service.AppuserService" id="appuserService" registry="cat"/>
 
+    <!--blog-->
     <dubbo:reference interface="com.zs.cat.blog.api.service.BlogService" id="blogService" registry="cat"/>
 </beans>

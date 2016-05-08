@@ -11,9 +11,9 @@
     </settings>
 
     <typeAliases>
-        <typeAlias type="com.zs.cat.web.entity.system.User" alias="User"/>
-        <typeAlias type="com.zs.cat.web.entity.system.Role" alias="Role"/>
-        <typeAlias type="com.zs.cat.web.entity.system.Menu" alias="Menu"/>
+        <typeAlias type="com.zs.cat.web.entity.User" alias="User"/>
+        <typeAlias type="com.zs.cat.web.entity.Role" alias="Role"/>
+        <typeAlias type="com.zs.cat.web.entity.Menu" alias="Menu"/>
         <typeAlias type="com.zs.cat.commons.dao.PageData" alias="pd"/>
         <!-- 分页 -->
         <typeAlias type="com.zs.cat.commons.dao.Page" alias="Page"/>

@@ -1,13 +1,14 @@
 package com.zs.cat.web.controller.system.login;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-
+import com.zs.cat.base.entity.Menu;
+import com.zs.cat.base.entity.Role;
+import com.zs.cat.base.entity.User;
+import com.zs.cat.base.service.MenuService;
+import com.zs.cat.base.service.RoleService;
+import com.zs.cat.base.service.UserService;
+import com.zs.cat.commons.dao.PageData;
+import com.zs.cat.commons.util.*;
+import com.zs.cat.commons.util.mail.BaseController;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -20,19 +21,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.zs.cat.commons.dao.PageData;
-import com.zs.cat.commons.util.AppUtil;
-import com.zs.cat.commons.util.Const;
-import com.zs.cat.commons.util.DateUtil;
-import com.zs.cat.commons.util.RightsHelper;
-import com.zs.cat.commons.util.Tools;
-import com.zs.cat.commons.util.mail.BaseController;
-import com.zs.cat.web.entity.system.Menu;
-import com.zs.cat.web.entity.system.Role;
-import com.zs.cat.web.entity.system.User;
-import com.zs.cat.web.service.system.menu.MenuService;
-import com.zs.cat.web.service.system.role.RoleService;
-import com.zs.cat.web.service.system.user.UserService;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /*
  * 总入口
@@ -287,7 +281,6 @@ public class LoginController extends BaseController {
     /**
      * 用户注销
      *
-     * @param session
      * @return
      */
     @RequestMapping(value = "/logout")

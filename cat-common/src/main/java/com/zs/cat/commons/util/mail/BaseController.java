@@ -1,16 +1,15 @@
 package com.zs.cat.commons.util.mail;
 
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.zs.cat.commons.dao.Page;
 import com.zs.cat.commons.dao.PageData;
 import com.zs.cat.commons.util.Logger;
 import com.zs.cat.commons.util.UuidUtil;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class BaseController {
 
@@ -47,7 +46,6 @@ public class BaseController {
      * @return
      */
     public String get32UUID() {
-
         return UuidUtil.get32UUID();
     }
 

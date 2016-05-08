@@ -39,7 +39,7 @@ import com.zs.cat.commons.util.PathUtil;
 import com.zs.cat.commons.util.Tools;
 import com.zs.cat.commons.util.mail.BaseController;
 import com.zs.cat.schedule.config.service.ITaskConfigService;
-import com.zs.cat.web.entity.system.Role;
+import com.zs.cat.web.entity.Role;
 import com.zs.cat.web.util.Jurisdiction;
 
 *//**
@@ -89,7 +89,7 @@ public class TaskConfigController extends BaseController {
 	*//**
  * 判断用户名是否存在
  *//*
-	@RequestMapping(value="/hasU")
+    @RequestMapping(value="/hasU")
 	@ResponseBody
 	public Object hasU(){
 		Map<String,String> map = new HashMap<String,String>();
@@ -110,7 +110,7 @@ public class TaskConfigController extends BaseController {
 	*//**
  * 判断邮箱是否存在
  *//*
-	@RequestMapping(value="/hasE")
+    @RequestMapping(value="/hasE")
 	@ResponseBody
 	public Object hasE(){
 		Map<String,String> map = new HashMap<String,String>();

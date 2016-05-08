@@ -1,17 +1,14 @@
 package com.zs.cat.web.controller.system.user;
 
-import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
-
+import com.zs.cat.base.entity.Role;
+import com.zs.cat.base.service.MenuService;
+import com.zs.cat.base.service.RoleService;
+import com.zs.cat.base.service.UserService;
+import com.zs.cat.commons.dao.Page;
+import com.zs.cat.commons.dao.PageData;
+import com.zs.cat.commons.util.*;
+import com.zs.cat.commons.util.mail.BaseController;
+import com.zs.cat.web.util.Jurisdiction;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.session.Session;
@@ -26,23 +23,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.zs.cat.commons.dao.Page;
-import com.zs.cat.commons.dao.PageData;
-import com.zs.cat.commons.util.AppUtil;
-import com.zs.cat.commons.util.Const;
-import com.zs.cat.commons.util.FileDownload;
-import com.zs.cat.commons.util.FileUpload;
-import com.zs.cat.commons.util.GetPinyin;
-import com.zs.cat.commons.util.ObjectExcelRead;
-import com.zs.cat.commons.util.ObjectExcelView;
-import com.zs.cat.commons.util.PathUtil;
-import com.zs.cat.commons.util.Tools;
-import com.zs.cat.commons.util.mail.BaseController;
-import com.zs.cat.web.entity.system.Role;
-import com.zs.cat.web.service.system.menu.MenuService;
-import com.zs.cat.web.service.system.role.RoleService;
-import com.zs.cat.web.service.system.user.UserService;
-import com.zs.cat.web.util.Jurisdiction;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * 类名称：UserController
@@ -487,7 +473,7 @@ public class UserController extends BaseController {
                 }
                 userService.saveU(pd);
             }
-			/*存入数据库操作======================================*/
+            /*存入数据库操作======================================*/
 
             mv.addObject("msg", "success");
         }
@@ -509,5 +495,5 @@ public class UserController extends BaseController {
         Session session = currentUser.getSession();
         return (Map<String, String>) session.getAttribute(Const.SESSION_QX);
     }
-	/* ===============================权限================================== */
+    /* ===============================权限================================== */
 }
